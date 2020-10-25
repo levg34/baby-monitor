@@ -30,17 +30,25 @@ class Day {
 	addChange(change) {
 		this.changes.push(change)
 	}
+	
+	totalDrankVolume() {
+		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b)
+	}
+	
+	didPoo() {
+		return this.changes.map(c => c.poo).reduce((a,b)=>a||b)
+	}
 }
 
 class Change {
-	constructor(time) {
+	constructor(time,poo) {
 		if (time) {
 			this.time = time
 		} else {
 			this.time = now()
 		}
 		this.pee = true
-		this.poo = false
+		this.poo = poo || false
 	}
 }
 
