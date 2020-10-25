@@ -1,5 +1,3 @@
-var moment = require('./libs/moment');
-
 function today() {
 	return moment().format('DD/MM/YYYY')
 }
