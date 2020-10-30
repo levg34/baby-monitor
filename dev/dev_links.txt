@@ -1,0 +1,15 @@
+Internationalisation
+
+https://tutorialedge.net/javascript/vuejs/vuejs-i18n-basics-tutorial/
+https://dev.to/ratracegrad/how-to-add-internationalization-to-a-vue-app-8ng
+https://stackoverflow.com/questions/43700573/internationalization-in-vue-js
+https://vueformulate.com/guide/internationalization/#supported-languages
+https://www.freecodecamp.org/news/how-to-add-internationalization-to-a-vue-application-d9cfdcabb03b/
+
+Front
+
+https://bootstrap-table.com/docs/getting-started/introduction/
+https://examples.bootstrap-table.com/#welcomes/vue-component.html
+https://www.w3schools.com/bootstrap4/bootstrap_tables.asp
+
+<script src="https://kit.fontawesome.com/e05e19b5ea.js" crossorigin="anonymous"></script>
