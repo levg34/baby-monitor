@@ -12,12 +12,12 @@
   </head>
   <body>
 
-    <div class="jumbotron text-center">
-      <h1>Baby monitor</h1>
-      <p>Follow up your baby needs! <i class="fas fa-baby"></i></p> 
+    <div class="jumbotron text-center" id="jumbo">
+      <h1>{{$t("jumbo.title")}}</h1>
+      <p>{{$t("jumbo.subtitle")}} <i class="fas fa-baby"></i></p> 
     </div>
       
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" id="nav">
       <a class="navbar-brand" href="#">
         <img src="img/bottle.png" alt="Logo" style="width:30px;">
       </a>
@@ -27,55 +27,67 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Add drink</a>
+            <a class="nav-link" href="#">{{$t("nav.add_drink")}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Add change</a>
+            <a class="nav-link" href="#">{{$t("nav.add_change")}}</a>
           </li>
           <!-- Dropdown -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Add...
+              {{$t("nav.add")}}
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Weight</a>
-              <a class="dropdown-item" href="#">Height</a>
-              <a class="dropdown-item" href="#">Bath</a>
-              <a class="dropdown-item" href="#">Vitamin</a>
-              <a class="dropdown-item" href="#">Vomit</a>
+              <a class="dropdown-item" href="#">{{$t("nav.weight")}}</a>
+              <a class="dropdown-item" href="#">{{$t("nav.height")}}</a>
+              <a class="dropdown-item" href="#">{{$t("nav.bath")}}</a>
+              <a class="dropdown-item" href="#">{{$t("nav.vitamin")}}</a>
+              <a class="dropdown-item" href="#">{{$t("nav.vomit")}}</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Export</a>
+            <a class="nav-link" href="#">{{$t("nav.export")}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Print</a>
+            <a class="nav-link" href="#">{{$t("nav.print")}}</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              {{$t("nav.language")}}
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#" v-on:click="setLocale('fr')"><img src="img/french.png" style="width:90px;"></a>
+              <a class="dropdown-item" href="#" v-on:click="setLocale('ja')"><img src="img/japanese.png" style="width:90px;"></a>
+              <a class="dropdown-item" href="#" v-on:click="setLocale('en')"><img src="img/english.png" style="width:90px;"></a>
+              <a class="dropdown-item" href="#" v-on:click="setLocale('de')"><img src="img/german.png" style="width:90px;"></a>
+              <a class="dropdown-item" href="#" v-on:click="setLocale('es')"><img src="img/spanish.png" style="width:90px;"></a>
+            </div>
           </li>
         </ul>
       </div>  
     </nav>
 
-    <div class="container" style="margin-top:30px">
+    <div class="container" style="margin-top:30px" id="main">
       <div class="row">
         <div class="col-sm-4">
-          <h2>Most used features</h2>
-          <button type="button" class="btn btn-primary">Add drink</button>
-          <button type="button" class="btn btn-dark">Add change</button>
+          <h2>{{$t("main.title1")}}</h2>
+          <button type="button" class="btn btn-primary">{{$t("nav.add_drink")}}</button>
+          <button type="button" class="btn btn-dark">{{$t("nav.add_change")}}</button>
           <br><br>
-          <h3>Select day</h3>
-          <p>Select the day you want to view</p>
+          <h3>{{$t("main.title2")}}</h3>
+          <p>{{$t("main.subtitle2")}}</p>
           <ul class="nav nav-pills flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Today</a>
+              <a class="nav-link active" href="#">{{$t("main.today")}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Yesterday</a>
+              <a class="nav-link" href="#">{{$t("main.yesterday")}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">28/10/2020</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Before</a>
+              <a class="nav-link disabled" href="#">{{$t("main.before")}}</a>
             </li>
           </ul>
           <hr class="d-sm-none">
@@ -84,29 +96,29 @@
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <th scope="row">Date</th>
+                <th scope="row">{{$t("main.date")}}</th>
                 <td>30/10/2020</td>
               </tr>
               <tr>
-                <th scope="row">Weight</th>
+                <th scope="row">{{$t("nav.weight")}}</th>
                 <td>5326 g</td>
               </tr>
               <tr>
-                <th scope="row">Height</th>
+                <th scope="row">{{$t("nav.height")}}</th>
                 <td>170 cm</td>
               </tr>
               <tr>
-                <th scope="row">Bath</th>
+                <th scope="row">{{$t("nav.bath")}}</th>
                 <td>20:55</td>
                 <td>Soap / Water</td>
               </tr>
               <tr>
-                <th scope="row">Vitamin D</th>
+                <th scope="row">{{$t("nav.vitamin")}} D</th>
                 <td>08:55</td>
                 <td>3 drops</td>
               </tr>
               <tr>
-                <th scope="row">Vomit</th>
+                <th scope="row">{{$t("nav.vomit")}}</th>
                 <td>08:55</td>
                 <td>15:23</td>
               </tr>
@@ -224,8 +236,8 @@
       </div>
     </div>
 
-    <div class="jumbotron text-center" style="margin-bottom:0">
-      <p>Made by <a href="https://levg34.github.io">levg34</a></p>
+    <div id="footer" class="jumbotron text-center" style="margin-bottom:0">
+      <p>{{$t("footer.made_by")}} <a href="https://levg34.github.io">levg34</a></p>
     </div>
 
     <!-- JavaScript -->
@@ -237,6 +249,10 @@
     
     <!-- Inside libs -->
     <script src="js/libs/moment.js"></script>
+    
+    <!-- vuejs -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
     
     <!-- Classes and code -->
     <script src="js/classes.js"></script>
