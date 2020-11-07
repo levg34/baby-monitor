@@ -1,0 +1,11 @@
+{
+	"english_name": "german",
+	"image": "german.png",
+	"jumbo": {
+		"title": "Babyüberwachung",
+		"subtitle": "Verfolgen Sie die Bedürfnisse Ihres Babys!"
+	},
+	"nav": {
+		"language": "Sprache"
+	}
+}
