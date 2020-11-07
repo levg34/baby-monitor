@@ -1,0 +1,22 @@
+{
+  "name": "baby-monitor",
+  "version": "1.0.0",
+  "description": "Little app to follow up the baby bottles and nappies changes, as well as the weight and height and other things",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levg34/baby-monitor.git"
+  },
+  "author": "levg34",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/levg34/baby-monitor/issues"
+  },
+  "homepage": "https://github.com/levg34/baby-monitor#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
