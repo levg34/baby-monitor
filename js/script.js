@@ -25,7 +25,14 @@ const messages = {
 			today: 'Today',
 			yesterday: 'Yesterday',
 			before: 'Before',
-			date: 'Date'
+			date: 'Date',
+			drinks: 'Drinks',
+			time: 'Time',
+			volume_served: 'Volume served',
+			volume_drunk: 'Volume drunk',
+			changes: 'Changes',
+			pee: 'Pee',
+			poo: 'Poo'
 		},
 		footer: {
 			made_by: 'Made by'
@@ -62,7 +69,14 @@ const messages = {
 			today: 'Aujourd\'hui',
 			yesterday: 'Hier',
 			before: 'Avant',
-			date: 'Date'
+			date: 'Date',
+			drinks: 'Tétées',
+			time: 'Heure',
+			volume_served: 'Volume préparé',
+			volume_drunk: 'Volume bu',
+			changes: 'Changes',
+			pee: 'Pipi',
+			poo: 'Caca'
 		},
 		footer: {
 			made_by: 'Auteur :'
