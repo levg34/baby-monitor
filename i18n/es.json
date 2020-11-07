@@ -1,0 +1,11 @@
+{
+	"english_name": "spanish",
+	"image": "spanish.png",
+	"jumbo": {
+		"title": "Monitor del bebe",
+		"subtitle": "¡Haga un seguimiento de las necesidades de su bebé!"
+	},
+	"nav": {
+		"language": "Idioma"
+	}
+}

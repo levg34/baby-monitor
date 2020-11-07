@@ -1,0 +1,40 @@
+{
+	"english_name": "french",
+	"image": "french.png",
+	"jumbo": {
+		"title": "Statistiques de bébé",
+		"subtitle": "Suivez les besoins de votre bébé au jour le jour !"
+	},
+	"nav": {
+		"add": "Ajouter...",
+		"add_drink": "Ajouter tétée",
+		"add_change": "Ajouter change",
+		"weight": "Poids",
+		"height": "Taille",
+		"bath": "Bain",
+		"vitamin": "Vitamine",
+		"vomit": "Vomi",
+		"export": "Exporter",
+		"print": "Imprimer",
+		"language": "Langue"
+	},
+	"main": {
+		"title1": "Les plus utilisés",
+		"title2": "Selectionner un jour",
+		"subtitle2": "Selectionner un jour pour le voir plus en détail.",
+		"today": "Aujourd'hui",
+		"yesterday": "Hier",
+		"before": "Avant",
+		"date": "Date",
+		"drinks": "Tétées",
+		"time": "Heure",
+		"volume_served": "Volume préparé",
+		"volume_drunk": "Volume bu",
+		"changes": "Changes",
+		"pee": "Pipi",
+		"poo": "Caca"
+	},
+	"footer": {
+		"made_by": "Auteur :"
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"english_name": "english",
+	"image": "english.png",
+	"jumbo": {
+		"title": "Baby monitor",
+		"subtitle": "Follow up your baby needs!"
+	},
+	"nav": {
+		"add": "Add...",
+		"add_drink": "Add drink",
+		"add_change": "Add change",
+		"weight": "Weight",
+		"height": "Height",
+		"bath": "Bath",
+		"vitamin": "Vitamin",
+		"vomit": "Vomit",
+		"export": "Export",
+		"print": "Print",
+		"language": "Language"
+	},
+	"main": {
+		"title1": "Most used features",
+		"title2": "Select day",
+		"subtitle2": "Select the day you want to view",
+		"today": "Today",
+		"yesterday": "Yesterday",
+		"before": "Before",
+		"date": "Date",
+		"drinks": "Drinks",
+		"time": "Time",
+		"volume_served": "Volume served",
+		"volume_drunk": "Volume drunk",
+		"changes": "Changes",
+		"pee": "Pee",
+		"poo": "Poo"
+	},
+	"footer": {
+		"made_by": "Made by"
+	}
+}

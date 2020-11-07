@@ -1,0 +1,11 @@
+{
+	"english_name": "japanese",
+	"image": "japanese.png",
+	"jumbo": {
+		"title": "ベビーモニター",
+		"subtitle": "赤ちゃんの事をフォローアップ!"
+	},
+	"nav": {
+		"language": "言語"
+	}
+}
