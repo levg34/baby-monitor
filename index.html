@@ -56,11 +56,7 @@
               {{$t("nav.language")}}
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#" v-on:click="setLocale('fr')"><img src="img/french.png" style="width:90px;"></a>
-              <a class="dropdown-item" href="#" v-on:click="setLocale('ja')"><img src="img/japanese.png" style="width:90px;"></a>
-              <a class="dropdown-item" href="#" v-on:click="setLocale('en')"><img src="img/english.png" style="width:90px;"></a>
-              <a class="dropdown-item" href="#" v-on:click="setLocale('de')"><img src="img/german.png" style="width:90px;"></a>
-              <a class="dropdown-item" href="#" v-on:click="setLocale('es')"><img src="img/spanish.png" style="width:90px;"></a>
+              <a v-for="lang in languages" class="dropdown-item" href="#" v-on:click="setLocale(lang.locale)"><img v-bind:src="'img/'+lang.image" style="width:90px;" v-bind:alt="lang.name"></a>
             </div>
           </li>
         </ul>

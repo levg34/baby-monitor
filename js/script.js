@@ -1,6 +1,8 @@
 // Ready translated locale messages
 const messages = {
 	en: {
+		english_name: 'english',
+		image: 'english.png',
 		jumbo: {
 			title: 'Baby monitor',
 			subtitle: 'Follow up your baby needs!'
@@ -39,12 +41,19 @@ const messages = {
 		}
 	},
 	ja: {
+		english_name: 'japanese',
+		image: 'japanese.png',
 		jumbo: {
 			title: 'ベビーモニター',
 			subtitle: '赤ちゃんの事をフォローアップ!'
+		},
+		nav: {
+			language: '言語'
 		}
 	},
 	fr: {
+		english_name: 'french',
+		image: 'french.png',
 		jumbo: {
 			title: 'Statistiques de bébé',
 			subtitle: 'Suivez les besoins de votre bébé au jour le jour !'
@@ -60,7 +69,7 @@ const messages = {
 			vomit: 'Vomi',
 			export: 'Exporter',
 			print: 'Imprimer',
-			language: 'Language'
+			language: 'Langue'
 		},
 		main: {
 			title1: 'Les plus utilisés',
@@ -83,15 +92,25 @@ const messages = {
 		}
 	},
 	es: {
+		english_name: 'spanish',
+		image: 'spanish.png',
 		jumbo: {
 			title: 'Monitor del bebe',
 			subtitle: '¡Haga un seguimiento de las necesidades de su bebé!'
+		},
+		nav: {
+			language: 'Idioma'
 		}
 	},
 	de: {
+		english_name: 'german',
+		image: 'german.png',
 		jumbo: {
 			title: 'Babyüberwachung',
 			subtitle: 'Verfolgen Sie die Bedürfnisse Ihres Babys!'
+		},
+		nav: {
+			language: 'Sprache'
 		}
 	}
 }
@@ -111,11 +130,10 @@ new Vue({
 new Vue({
 	i18n,
 	data: {
-		language: i18n.locale
+		languages: Object.keys(messages).map(lang => Object.create({locale:lang,name:messages[lang].english_name,image:messages[lang].image}))
 	},
 	methods: {
 		setLocale: function (locale) {
-			this.language = locale
 			i18n.locale = locale
 		}
 	}
