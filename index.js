@@ -21,12 +21,6 @@ app.get('/languages', (req, res) => {
 		let messages = {}
 
 		files.forEach(file => {
-			/*fs.readFile(i18nDir+'/'+file, (err, data) => {
-				if (err) res.json({error:err})
-				let langData = JSON.parse(data)
-				let langName = file.split(file.substr(0, file.lastIndexOf('.')))
-				messages[langName] = langData
-			})*/
 			let data = fs.readFileSync(i18nDir+'/'+file)
 			let langData = JSON.parse(data)
 			let langName = file.substr(0, file.lastIndexOf('.'))
