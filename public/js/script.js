@@ -1,14 +1,19 @@
+let messages
+
 axios.get('/languages').then(response => {
 	// Ready translated locale messages
-	const messages = response.data
-
+	messages = response.data
+}).catch(function (error) {
+	// handle error
+	console.log(error)
+	messages = {}
+}).then(function () {
 	// Create VueI18n instance with options
 	const i18n = new VueI18n({
 		locale: 'fr', // set locale
 		messages, // set locale messages
 	})
-
-
+	
 	// Create a Vue instance with `i18n` option
 	new Vue({
 		i18n
@@ -33,7 +38,4 @@ axios.get('/languages').then(response => {
 	new Vue({
 		i18n
 	}).$mount('#footer')
-}).catch(function (error) {
-	// handle error
-	console.log(error)
 })
