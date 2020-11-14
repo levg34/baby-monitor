@@ -32,7 +32,10 @@ axios.get('/languages').then(response => {
 	}).$mount('#nav')
 
 	new Vue({
-		i18n
+		i18n,
+		data: {
+			selectedDay: testDay
+		}
 	}).$mount('#main')
 
 	new Vue({

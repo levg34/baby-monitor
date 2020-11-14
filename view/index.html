@@ -93,30 +93,30 @@
             <tbody>
               <tr>
                 <th scope="row">{{$t("main.date")}}</th>
-                <td>30/10/2020</td>
+                <td>{{selectedDay.date}}</td>
               </tr>
-              <tr>
+              <tr v-if="selectedDay.weight">
                 <th scope="row">{{$t("nav.weight")}}</th>
-                <td>5326 g</td>
+                <td>{{selectedDay.weight}} g</td>
               </tr>
-              <tr>
+              <tr v-if="selectedDay.height">
                 <th scope="row">{{$t("nav.height")}}</th>
-                <td>170 cm</td>
+                <td>{{selectedDay.height}} cm</td>
               </tr>
-              <tr>
+              <tr v-if="selectedDay.bath">
                 <th scope="row">{{$t("nav.bath")}}</th>
-                <td>20:55</td>
-                <td>Soap / Water</td>
+                <td>{{selectedDay.bath.time}}</td>
+                <td v-if="selectedDay.bath.soap">{{$t("main.soap")}}</td>
+                <td v-else>{{$t("main.water")}}</td>
               </tr>
-              <tr>
+              <tr v-if="selectedDay.vitamin">
                 <th scope="row">{{$t("nav.vitamin")}} D</th>
-                <td>08:55</td>
-                <td>3 drops</td>
+                <td>{{selectedDay.vitamin.time}}</td>
+                <td>{{selectedDay.vitamin.drops}} {{$t("main.drops")}}</td>
               </tr>
-              <tr>
+              <tr v-if="selectedDay.vomit">
                 <th scope="row">{{$t("nav.vomit")}}</th>
-                <td>08:55</td>
-                <td>15:23</td>
+                <td v-for="vomit in selectedDay.vomit">{{vomit.time}} <span v-if="vomit.comments">({{vomit.comments}})</span></td>
               </tr>
             </tbody>
           </table>                                                                                                             
@@ -124,53 +124,21 @@
             <thead>
               <tr>
                 <th scope="col">{{$t("main.drinks")}}</th>
-                <th scope="col">1</th>
-                <th scope="col">2</th>
-                <th scope="col">3</th>
-                <th scope="col">4</th>
-                <th scope="col">5</th>
-                <th scope="col">6</th>
-                <th scope="col">7</th>
-                <th scope="col">8</th>
-                <th scope="col">9</th>
+                <th v-for="(drink, index) in selectedDay.drinks" scope="col">{{index + 1}}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">{{$t("main.time")}}</th>
-                <td>01:55</td>
-                <td>04:32</td>
-                <td>08:55</td>
-                <td>08:55</td>
-                <td>08:55</td>
-                <td>08:55</td>
-                <td>08:55</td>
-                <td>08:55</td>
-                <td>08:55</td>
+                <td v-for="drink in selectedDay.drinks">{{drink.time}}</td>
               </tr>
               <tr>
                 <th scope="row">{{$t("main.volume_served")}}</th>
-                <td>170 ml</td>
-                <td>140 ml</td>
-                <td>170 ml</td>
-                <td>170 ml</td>
-                <td>170 ml</td>
-                <td>170 ml</td>
-                <td>170 ml</td>
-                <td>170 ml</td>
-                <td>170 ml</td>
+                <td v-for="drink in selectedDay.drinks">{{drink.totalVolume}} ml</td>
               </tr>
               <tr>
                 <th scope="row">{{$t("main.volume_drunk")}}</th>
-                <td>170 ml</td>
-                <td>140 ml</td>
-                <td>110 ml</td>
-                <td>140 ml</td>
-                <td>140 ml</td>
-                <td>140 ml</td>
-                <td>140 ml</td>
-                <td>140 ml</td>
-                <td>140 ml</td>
+                <td v-for="drink in selectedDay.drinks">{{drink.drankVolume}} ml</td>
               </tr>
             </tbody>
           </table>
@@ -178,53 +146,21 @@
             <thead>
               <tr>
                 <th scope="col">{{$t("main.changes")}}</th>
-                <th scope="col">1</th>
-                <th scope="col">2</th>
-                <th scope="col">3</th>
-                <th scope="col">4</th>
-                <th scope="col">5</th>
-                <th scope="col">6</th>
-                <th scope="col">7</th>
-                <th scope="col">8</th>
-                <th scope="col">9</th>
+                <th v-for="(change, index) in selectedDay.changes" scope="col">{{index + 1}}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">{{$t("main.time")}}</th>
-                <td>01:55</td>
-                <td>04:32</td>
-                <td>08:55</td>
-                <td>01:55</td>
-                <td>04:32</td>
-                <td>08:55</td>
-                <td>01:55</td>
-                <td>04:32</td>
-                <td>08:55</td>
+                <td v-for="change in selectedDay.changes">{{change.time}}</td>
               </tr>
               <tr>
                 <th scope="row">{{$t("main.pee")}}</th>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td><i class="fas fa-check-circle"></i></td>
+                <td v-for="change in selectedDay.changes"><i v-if="change.pee" class="fas fa-check-circle"></i></td>
               </tr>
               <tr>
                 <th scope="row">{{$t("main.poo")}}</th>
-                <td></td>
-                <td><i class="fas fa-check-circle"></i></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td v-for="change in selectedDay.changes"><i v-if="change.poo" class="fas fa-check-circle"></i></td>
               </tr>
             </tbody>
           </table>

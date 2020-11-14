@@ -30,3 +30,5 @@ let testVitamin = new Vitamin('08:55',3)
 testDay.setVitamin(testVitamin)
 
 console.log(testDay)
+
+// testDay.height = 170

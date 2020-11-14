@@ -32,7 +32,10 @@
 		"volume_drunk": "Volume drunk",
 		"changes": "Changes",
 		"pee": "Pee",
-		"poo": "Poo"
+		"poo": "Poo",
+		"soap": "Soap",
+		"water": "Water",
+		"drops": "drops"
 	},
 	"footer": {
 		"made_by": "Made by"
