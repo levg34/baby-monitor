@@ -12,6 +12,23 @@ npm run
 
 Then go to `localhost:8080`
 
+### Docker
+
+To run in a docker container (you need a running installation of Docker), simply do:
+
+```bash
+docker-compose up --build
+```
+
+If you do not have `docker-compose` (and do not plan on installing it), you can do:
+
+```bash
+docker build -t baby-monitor .
+docker run -p 80:8080 -d baby-monitor
+```
+
+Then go to `localhost`
+
 ## Translations
 
 ### Add a new language
