@@ -4,6 +4,10 @@ const port = 8080
 
 const fs = require('fs')
 
+const Datastore = require('nedb')
+
+const db = new Datastore({ filename: 'data/datafile', autoload: true })
+
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
@@ -29,6 +33,19 @@ app.get('/languages', (req, res) => {
 		
 		res.json(messages)
 	})
+})
+
+app.get('/day/:day', (req, res) => {
+	let day = req.params.day
+	db.findOne({ date: day }, function (err, doc) {
+		res.json(doc)
+	});
+})
+
+app.get('/days', (req, res) => {
+	db.find({}, function (err, docs) {
+		res.json(docs.map(d=>d.date))
+	});
 })
 
 app.listen(port, () => {

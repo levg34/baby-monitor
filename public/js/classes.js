@@ -1,5 +1,5 @@
 function today() {
-	return moment().format('DD/MM/YYYY')
+	return moment().format('YYYY-MM-DD')
 }
 
 function now() {
@@ -57,6 +57,10 @@ class Day {
 	
 	totalDrinks() {
 		return this.drinks.length
+	}
+	
+	static fromJSON(object) {
+		//TODO
 	}
 }
 
