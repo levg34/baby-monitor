@@ -93,7 +93,7 @@
             <tbody>
               <tr>
                 <th scope="row">{{$t("main.date")}}</th>
-                <td>{{selectedDay.date}}</td>
+                <td>{{localeDate(selectedDay.date)}}</td>
               </tr>
               <tr v-if="selectedDay.weight">
                 <th scope="row">{{$t("nav.weight")}}</th>
@@ -180,7 +180,7 @@
     <script src="https://kit.fontawesome.com/e05e19b5ea.js" crossorigin="anonymous"></script>
     
     <!-- Inside libs -->
-    <script src="js/libs/moment.js"></script>
+    <script src="js/libs/moment-with-locales.js"></script>
     
     <!-- vuejs -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>

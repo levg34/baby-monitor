@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/levg34/baby-monitor#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nedb": "^1.8.0"
   }
 }

@@ -35,6 +35,11 @@ axios.get('/languages').then(response => {
 		i18n,
 		data: {
 			selectedDay: testDay
+		},
+		methods: {
+			localeDate: function (date) {
+				return moment(date).locale(i18n.locale).format('L')
+			}
 		}
 	}).$mount('#main')
 
