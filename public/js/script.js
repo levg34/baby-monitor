@@ -34,7 +34,20 @@ axios.get('/languages').then(response => {
 	new Vue({
 		i18n,
 		data: {
-			selectedDay: testDay
+			selectedDay: null,
+			days: []
+		},
+		mounted() {
+			axios.get('/days').then(response => {
+				let days = response.data
+				if (days.length > 0) {
+					this.days = days
+					let lastDay = [...days].pop()
+					axios.get('/day/'+lastDay).then(response => {
+						this.selectedDay = response.data
+					})
+				}
+			})
 		},
 		methods: {
 			localeDate: function (date) {
