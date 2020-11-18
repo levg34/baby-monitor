@@ -1,2 +1,3 @@
 {"date":"2020-11-16","weight":null,"height":null,"bath":{"time":"23:56","soap":false},"vitamin":{"time":"08:55","drops":3},"vomit":[{"time":"02:56"},{"time":"15:33","comments":"blue colour"}],"drinks":[{"time":"HH:mm","totalVolume":170,"leftVolume":0},{"time":"20:34","totalVolume":150,"leftVolume":100}],"changes":[{"time":"HH:mm","pee":true,"poo":false},{"time":"HH:mm","pee":true,"poo":true}],"_id":"KtCqE6PDSwdfmih1"}
 {"date":"2020-11-17","weight":5152,"height":57,"bath":null,"vitamin":null,"vomit":null,"drinks":[],"changes":[],"_id":"trDP7dG9V71LZPGl"}
+{"$$indexCreated":{"fieldName":"date","unique":true,"sparse":false}}
