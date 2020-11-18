@@ -8,6 +8,10 @@ const Datastore = require('nedb')
 
 const db = new Datastore({ filename: 'data/datafile', autoload: true })
 
+db.ensureIndex({ fieldName: 'date', unique: true }, function (err) {
+	if (err) console.log(err)
+})
+
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
@@ -43,7 +47,7 @@ app.get('/day/:day', (req, res) => {
 })
 
 app.get('/days', (req, res) => {
-	db.find({}, function (err, docs) {
+	db.find({}, { date: 1, _id: 0 }, function (err, docs) {
 		res.json(docs.map(d=>d.date))
 	});
 })
