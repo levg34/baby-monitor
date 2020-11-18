@@ -73,17 +73,14 @@
           <h3>{{$t("main.title2")}}</h3>
           <p>{{$t("main.subtitle2")}}</p>
           <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">{{$t("main.today")}}</a>
+            <li class="nav-item" v-if="!hasDataToday()">
+              <a class="nav-link disabled" href="#">{{localeDate()}}</a>
+            </li>
+            <li class="nav-item" v-if="selectedDay && selectedDay.date" v-for="day in days.slice().reverse()">
+              <a class="nav-link" href="#" :class="{ active: day === selectedDay.date }">{{localeDate(day)}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">{{$t("main.yesterday")}}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">28/10/2020</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">{{$t("main.before")}}</a>
+              <a class="nav-link disabled" href="#">{{$t("main.no_data")}}</a>
             </li>
           </ul>
           <hr class="d-sm-none">
@@ -164,6 +161,9 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="col-sm-8" v-else>
+          <h2>{{$t("main.add_something")}}</h2>
         </div>
       </div>
     </div>
