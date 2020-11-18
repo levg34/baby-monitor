@@ -22,9 +22,6 @@
 		"title1": "Les plus utilisés",
 		"title2": "Selectionner un jour",
 		"subtitle2": "Selectionner un jour pour le voir plus en détail.",
-		"today": "Aujourd'hui",
-		"yesterday": "Hier",
-		"before": "Avant",
 		"date": "Date",
 		"drinks": "Tétées",
 		"time": "Heure",
@@ -35,7 +32,9 @@
 		"poo": "Caca",
 		"soap": "Savon",
 		"water": "Eau",
-		"drops": "gouttes"
+		"drops": "gouttes",
+		"add_something": "Commencez par ajouter quelque chose.",
+		"no_data": "Pas de données supplémentaires"
 	},
 	"footer": {
 		"made_by": "Auteur :"

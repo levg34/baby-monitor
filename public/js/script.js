@@ -52,6 +52,9 @@ axios.get('/languages').then(response => {
 		methods: {
 			localeDate: function (date) {
 				return moment(date).locale(i18n.locale).format('L')
+			},
+			hasDataToday() {
+				return this.days.includes(moment().format('YYYY-MM-DD'))
 			}
 		}
 	}).$mount('#main')

@@ -22,9 +22,6 @@
 		"title1": "Most used features",
 		"title2": "Select day",
 		"subtitle2": "Select the day you want to view",
-		"today": "Today",
-		"yesterday": "Yesterday",
-		"before": "Before",
 		"date": "Date",
 		"drinks": "Drinks",
 		"time": "Time",
@@ -35,7 +32,9 @@
 		"poo": "Poo",
 		"soap": "Soap",
 		"water": "Water",
-		"drops": "drops"
+		"drops": "drops",
+		"add_something": "Begin by adding something.",
+		"no_data": "No more data"
 	},
 	"footer": {
 		"made_by": "Made by"
