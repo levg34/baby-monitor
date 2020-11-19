@@ -43,9 +43,7 @@ axios.get('/languages').then(response => {
 				if (days.length > 0) {
 					this.days = days
 					let lastDay = [...days].pop()
-					axios.get('/day/'+lastDay).then(response => {
-						this.selectedDay = response.data
-					})
+					this.loadDay(lastDay)
 				}
 			})
 		},
@@ -55,6 +53,11 @@ axios.get('/languages').then(response => {
 			},
 			hasDataToday() {
 				return this.days.includes(moment().format('YYYY-MM-DD'))
+			},
+			loadDay(day) {
+				axios.get('/day/'+day).then(response => {
+					this.selectedDay = response.data
+				})
 			}
 		}
 	}).$mount('#main')
