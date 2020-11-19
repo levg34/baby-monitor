@@ -77,7 +77,7 @@
               <a class="nav-link disabled" href="#">{{localeDate()}}</a>
             </li>
             <li class="nav-item" v-if="selectedDay && selectedDay.date" v-for="day in days.slice().reverse()">
-              <a class="nav-link" href="#" :class="{ active: day === selectedDay.date }">{{localeDate(day)}}</a>
+              <a class="nav-link" href="#" :class="{ active: day === selectedDay.date }" v-on:click="loadDay(day)">{{localeDate(day)}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="#">{{$t("main.no_data")}}</a>
