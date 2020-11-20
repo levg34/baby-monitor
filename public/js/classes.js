@@ -60,7 +60,18 @@ class Day {
 	}
 	
 	static fromJSON(object) {
-		//TODO
+		if (object.bath) {
+			object.bath = Bath.fromJSON(object.bath)
+		}
+		if (object.vitamin) {
+			object.vitamin = Vitamin.fromJSON(object.vitamin)
+		}
+		if (object.vomit) {
+			object.vomit = Vomit.fromJSON(object.vomit)
+		}
+		object.drinks = object.drinks.map(d=>Drink.fromJSON(d))
+		object.changes = object.changes.map(c=>Change.fromJSON(c))
+		return Object.assign(new Day(), object)
 	}
 }
 
@@ -73,6 +84,10 @@ class Change {
 		}
 		this.pee = true
 		this.poo = poo || false
+	}
+	
+	static fromJSON(object) {
+		return Object.assign(new Change(), object)
 	}
 }
 
@@ -94,6 +109,10 @@ class Drink {
 	get drankVolume() {
 		return this.totalVolume - this.leftVolume
 	}
+	
+	static fromJSON(object) {
+		return Object.assign(new Drink(), object)
+	}
 }
 
 class Bath {
@@ -105,6 +124,10 @@ class Bath {
 		}
 		this.soap = (soap === true)
 	}
+	
+	static fromJSON(object) {
+		return new Bath(object.time,object.soap)
+	}
 }
 
 class Vitamin {
@@ -115,6 +138,10 @@ class Vitamin {
 			this.time = now()
 		}
 		this.drops = drops
+	}
+	
+	static fromJSON(object) {
+		return new Vitamin(object.time,object.drops)
 	}
 }
 
@@ -128,5 +155,9 @@ class Vomit {
 		if (comments) {
 			this.comments = comments
 		}
+	}
+	
+	static fromJSON(object) {
+		return new Vomit(object.time,object.comments)
 	}
 }

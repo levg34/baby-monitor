@@ -56,7 +56,7 @@ axios.get('/languages').then(response => {
 			},
 			loadDay(day) {
 				axios.get('/day/'+day).then(response => {
-					this.selectedDay = response.data
+					this.selectedDay = Day.fromJSON(response.data)
 				})
 			}
 		}
