@@ -6,7 +6,7 @@
 		"subtitle": "Follow up your baby needs!"
 	},
 	"nav": {
-		"add": "Add...",
+		"add": "Add",
 		"add_drink": "Add drink",
 		"add_change": "Add change",
 		"weight": "Weight",
@@ -34,7 +34,9 @@
 		"water": "Water",
 		"drops": "drops",
 		"add_something": "Begin by adding something.",
-		"no_data": "No more data"
+		"no_data": "No more data",
+		"cancel": "Cancel",
+		"add_change": "Add change"
 	},
 	"footer": {
 		"made_by": "Made by"
