@@ -6,7 +6,7 @@
 		"subtitle": "Suivez les besoins de votre bébé au jour le jour !"
 	},
 	"nav": {
-		"add": "Ajouter...",
+		"add": "Ajouter",
 		"add_drink": "Ajouter tétée",
 		"add_change": "Ajouter change",
 		"weight": "Poids",
@@ -34,7 +34,9 @@
 		"water": "Eau",
 		"drops": "gouttes",
 		"add_something": "Commencez par ajouter quelque chose.",
-		"no_data": "Pas de données supplémentaires"
+		"no_data": "Pas de données supplémentaires",
+		"cancel": "Annuler",
+		"add_change": "Ajout change"
 	},
 	"footer": {
 		"made_by": "Auteur :"
