@@ -35,7 +35,10 @@ axios.get('/languages').then(response => {
 		i18n,
 		data: {
 			selectedDay: null,
-			days: []
+			days: [],
+			modalTime: '00:00',
+			modalPee: true,
+			modalPoo: false
 		},
 		mounted() {
 			axios.get('/days').then(response => {
@@ -57,6 +60,40 @@ axios.get('/languages').then(response => {
 			loadDay(day) {
 				axios.get('/day/'+day).then(response => {
 					this.selectedDay = Day.fromJSON(response.data)
+				})
+			},
+			loadChangeModal() {
+				this.modalTime = now()
+				this.modalPee = true
+				this.modalPoo = false
+				let today = moment().format('YYYY-MM-DD')
+				if (this.hasDataToday()) {
+					this.loadDay(today)
+				} else {
+					this.selectedDay = new Day()
+				}
+			},
+			addChange() {
+				let newChange = new Change(this.modalTime,this.modalPoo)
+				if (!this.modalPee) {
+					newChange.pee = false
+				}
+				this.selectedDay.addChange(newChange)
+				this.saveDay()
+			},
+			saveDay() {
+				$('#changeModal').modal('hide')
+				axios.post('/day',this.selectedDay).then(response => {
+					this.selectedDay = Day.fromJSON(response.data)
+					this.loadDays()
+				})
+			},
+			loadDays() {
+				axios.get('/days').then(response => {
+					let days = response.data
+					if (days.length > 0) {
+						this.days = days
+					}
 				})
 			}
 		}
