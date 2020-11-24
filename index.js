@@ -66,7 +66,7 @@ app.post('/day', (req, res) => {
 })
 
 app.get('/days', (req, res) => {
-	db.find({}, { date: 1, _id: 0 }, function (err, docs) {
+	db.find({}, { date: 1, _id: 0 }).sort({date: -1}).exec(function (err, docs) {
 		res.json(docs.map(d=>d.date))
 	})
 })
