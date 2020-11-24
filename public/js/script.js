@@ -45,7 +45,7 @@ axios.get('/languages').then(response => {
 				let days = response.data
 				if (days.length > 0) {
 					this.days = days
-					let lastDay = [...days].pop()
+					let lastDay = days[0]
 					this.loadDay(lastDay)
 				}
 			})
