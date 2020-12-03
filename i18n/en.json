@@ -36,7 +36,10 @@
 		"add_something": "Begin by adding something.",
 		"no_data": "No more data",
 		"cancel": "Cancel",
-		"add_change": "Add change"
+		"add_change": "Add change",
+		"add_drink": "Add drink",
+		"total_volume": "Served volume",
+		"left_volume": "Left volume"
 	},
 	"footer": {
 		"made_by": "Made by"

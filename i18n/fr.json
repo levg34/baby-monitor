@@ -36,7 +36,10 @@
 		"add_something": "Commencez par ajouter quelque chose.",
 		"no_data": "Pas de données supplémentaires",
 		"cancel": "Annuler",
-		"add_change": "Ajout change"
+		"add_change": "Ajout change",
+		"add_drink": "Ajout tétée",
+		"total_volume": "Volume préparé",
+		"left_volume": "Volume restant"
 	},
 	"footer": {
 		"made_by": "Auteur :"
