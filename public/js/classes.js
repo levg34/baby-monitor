@@ -103,7 +103,7 @@ class Drink {
 		} else {
 			this.totalVolume = DEFAULT_VOLUME
 		}
-		this.leftVolume = this.totalVolume
+		this.leftVolume = 0
 	}
 	
 	get drankVolume() {

@@ -38,7 +38,10 @@ axios.get('/languages').then(response => {
 			days: [],
 			modalTime: '00:00',
 			modalPee: true,
-			modalPoo: false
+			modalPoo: false,
+			openedModal: null,
+			modalTotalVolume: 0,
+			modalLeftVolume: 0
 		},
 		mounted() {
 			axios.get('/days').then(response => {
@@ -62,10 +65,13 @@ axios.get('/languages').then(response => {
 					this.selectedDay = Day.fromJSON(response.data)
 				})
 			},
-			loadChangeModal() {
+			loadModal(modalName) {
+				this.openedModal = modalName
 				this.modalTime = now()
 				this.modalPee = true
 				this.modalPoo = false
+				this.modalTotalVolume = DEFAULT_VOLUME
+				this.modalLeftVolume = 0
 				let today = moment().format('YYYY-MM-DD')
 				if (this.hasDataToday()) {
 					this.loadDay(today)
@@ -73,16 +79,32 @@ axios.get('/languages').then(response => {
 					this.selectedDay = new Day()
 				}
 			},
-			addChange() {
-				let newChange = new Change(this.modalTime,this.modalPoo)
-				if (!this.modalPee) {
-					newChange.pee = false
+			add() {
+				switch (this.openedModal) {
+					case 'change':
+						let newChange = new Change(this.modalTime,this.modalPoo)
+						if (!this.modalPee) {
+							newChange.pee = false
+						}
+						this.selectedDay.addChange(newChange)
+						break;
+					case 'drink':
+						let newDrink = new Drink(this.modalTime,this.modalTotalVolume)
+						if (this.modalLeftVolume) {
+							newDrink.leftVolume = this.modalLeftVolume
+						}
+						this.selectedDay.addDrink(newDrink)
+						break;
+					default:
+						console.error('Cannot open modal for '+this.openedModal)
+						break;
 				}
-				this.selectedDay.addChange(newChange)
+				
 				this.saveDay()
+				$('#addModal').modal('hide')
+				this.openedModal = null
 			},
 			saveDay() {
-				$('#changeModal').modal('hide')
 				axios.post('/day',this.selectedDay).then(response => {
 					this.selectedDay = Day.fromJSON(response.data)
 					this.loadDays()
