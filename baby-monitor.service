@@ -1,0 +1,16 @@
+[Unit]
+Description=Baby monitor
+After=network.target
+
+[Service]
+Environment=PORT=3000
+ExecStart=/usr/bin/node index.js
+WorkingDirectory=/home/pi/prod/baby-monitor
+StandardOutput=inherit
+StandardError=inherit
+Restart=on-failure
+User=pi
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
