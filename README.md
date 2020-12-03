@@ -29,6 +29,44 @@ docker run -p 80:8080 -d baby-monitor
 
 Then go to `localhost`
 
+### System.d
+
+To run as a system.d service, change the `baby-monitor.service` file as follows:
+
+- Change the working directory with yours:
+
+```
+WorkingDirectory=/your/working/directory/baby-monitor
+```
+
+- Change the user with yours:
+
+```
+User=yourUser
+```
+
+- Copy in the system.d directory:
+
+```bash
+sudo cp baby-monitor.service /etc/systemd/system
+```
+
+- Start with the command:
+
+```bash
+sudo systemctl start baby-monitor.service
+```
+
+- Check that it is running properly
+
+```bash
+sudo systemctl status baby-monitor.service
+```
+
+If you get any errors, do not forget to run `npm install` in your working directory
+
+Then go to `localhost:3000` in your browser.
+
 ## Translations
 
 ### Add a new language
