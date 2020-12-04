@@ -39,7 +39,11 @@
 		"add_change": "Ajout change",
 		"add_drink": "Ajout tétée",
 		"total_volume": "Volume préparé",
-		"left_volume": "Volume restant"
+		"left_volume": "Volume restant",
+		"add_bath": "Ajout bain",
+		"add_vitamin": "Ajout vitamine",
+		"add_vomit": "Ajout vomi",
+		"comments": "Commentaires"
 	},
 	"footer": {
 		"made_by": "Auteur :"

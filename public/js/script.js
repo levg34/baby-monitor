@@ -27,11 +27,14 @@ axios.get('/languages').then(response => {
 		methods: {
 			setLocale: function (locale) {
 				i18n.locale = locale
+			},
+			loadModal(modalName) {
+				mainVue.loadModal(modalName)
 			}
 		}
 	}).$mount('#nav')
 
-	new Vue({
+	var mainVue = new Vue({
 		i18n,
 		data: {
 			selectedDay: null,
@@ -41,7 +44,10 @@ axios.get('/languages').then(response => {
 			modalPoo: false,
 			openedModal: null,
 			modalTotalVolume: 0,
-			modalLeftVolume: 0
+			modalLeftVolume: 0,
+			modalSoap: false,
+			modalComments: '',
+			modalDrops: 0
 		},
 		mounted() {
 			axios.get('/days').then(response => {
@@ -72,6 +78,9 @@ axios.get('/languages').then(response => {
 				this.modalPoo = false
 				this.modalTotalVolume = DEFAULT_VOLUME
 				this.modalLeftVolume = 0
+				this.modalSoap = false
+				this.modalComments = ''
+				this.modalDrops = DEFAULT_DROPS
 				let today = moment().format('YYYY-MM-DD')
 				if (this.hasDataToday()) {
 					this.loadDay(today)
@@ -94,6 +103,21 @@ axios.get('/languages').then(response => {
 							newDrink.leftVolume = this.modalLeftVolume
 						}
 						this.selectedDay.addDrink(newDrink)
+						break;
+					case 'bath':
+						let newBath = new Bath(this.modalTime,this.modalSoap)
+						this.selectedDay.setBath(newBath)
+						break;
+					case 'vomit':
+						let newVomit = new Vomit(this.modalTime)
+						if (this.modalComments) {
+							newVomit.comments = this.modalComments
+						}
+						this.selectedDay.addVomit(newVomit)
+						break;
+					case 'vitamin':
+						let newVitamin = new Vitamin(this.modalTime,this.modalDrops)
+						this.selectedDay.setVitamin(newVitamin)
 						break;
 					default:
 						console.error('Cannot open modal for '+this.openedModal)

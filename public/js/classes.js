@@ -7,6 +7,7 @@ function now() {
 }
 
 let DEFAULT_VOLUME = 170
+let DEFAULT_DROPS = 3
 
 class Day {
 	constructor(date) {
@@ -67,7 +68,7 @@ class Day {
 			object.vitamin = Vitamin.fromJSON(object.vitamin)
 		}
 		if (object.vomit) {
-			object.vomit = Vomit.fromJSON(object.vomit)
+			object.vomit = object.vomit.map(v=>Vomit.fromJSON(v))
 		}
 		object.drinks = object.drinks.map(d=>Drink.fromJSON(d))
 		object.changes = object.changes.map(c=>Change.fromJSON(c))
