@@ -39,7 +39,11 @@
 		"add_change": "Add change",
 		"add_drink": "Add drink",
 		"total_volume": "Served volume",
-		"left_volume": "Left volume"
+		"left_volume": "Left volume",
+		"add_bath": "Add bath",
+		"add_vitamin": "Add vitamin",
+		"add_vomit": "Add vomit",
+		"comments": "Comments"
 	},
 	"footer": {
 		"made_by": "Made by"

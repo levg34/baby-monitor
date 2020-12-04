@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#addModal" v-on:click="loadModal('drink')">{{$t("nav.add_drink")}}</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('drink')">{{$t("nav.add_drink")}}</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#addModal" v-on:click="loadModal('change')">{{$t("nav.add_change")}}</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('change')">{{$t("nav.add_change")}}</a>
           </li>
           <!-- Dropdown -->
           <li class="nav-item dropdown">
@@ -40,9 +40,9 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#">{{$t("nav.weight")}}</a>
               <a class="dropdown-item" href="#">{{$t("nav.height")}}</a>
-              <a class="dropdown-item" href="#">{{$t("nav.bath")}}</a>
-              <a class="dropdown-item" href="#">{{$t("nav.vitamin")}}</a>
-              <a class="dropdown-item" href="#">{{$t("nav.vomit")}}</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('bath')">{{$t("nav.bath")}}</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('vitamin')">{{$t("nav.vitamin")}}</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('vomit')">{{$t("nav.vomit")}}</a>
             </div>
           </li>
           <li class="nav-item">
@@ -208,6 +208,25 @@
                 <div class="form-group">
                   <label for="left_volume">{{$t("main.left_volume")}}:</label>
                   <input type="number" step="1" class="form-control" id="total_volume" v-model="modalLeftVolume">
+                </div>
+              </div>
+              <div v-if="openedModal == 'bath'">
+                <div class="form-group form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" v-model="modalSoap"> {{$t("main.soap")}}
+                  </label>
+                </div>
+              </div>
+              <div v-if="openedModal == 'vomit'">
+                <div class="form-group">
+                  <label for="left_volume">{{$t("main.comments")}}:</label>
+                  <input type="text" class="form-control" id="total_volume" v-model="modalComments">
+                </div>
+              </div>
+              <div v-if="openedModal == 'vitamin'">
+                <div class="form-group">
+                  <label for="left_volume">{{$t("main.drops")}}:</label>
+                  <input type="number" step="1" class="form-control" id="total_volume" v-model="modalDrops">
                 </div>
               </div>
             </div>
