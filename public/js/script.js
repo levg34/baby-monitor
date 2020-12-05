@@ -50,14 +50,7 @@ axios.get('/languages').then(response => {
 			modalDrops: 0
 		},
 		mounted() {
-			axios.get('/days').then(response => {
-				let days = response.data
-				if (days.length > 0) {
-					this.days = days
-					let lastDay = days[0]
-					this.loadDay(lastDay)
-				}
-			})
+			this.loadDays()
 		},
 		methods: {
 			localeDate: function (date) {
@@ -130,7 +123,6 @@ axios.get('/languages').then(response => {
 			},
 			saveDay() {
 				axios.post('/day',this.selectedDay).then(response => {
-					this.selectedDay = Day.fromJSON(response.data)
 					this.loadDays()
 				})
 			},
@@ -139,6 +131,8 @@ axios.get('/languages').then(response => {
 					let days = response.data
 					if (days.length > 0) {
 						this.days = days
+						let lastDay = days[0]
+						this.loadDay(lastDay)
 					}
 				})
 			}
