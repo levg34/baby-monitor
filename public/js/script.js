@@ -61,7 +61,13 @@ axios.get('/languages').then(response => {
 			},
 			loadDay(day) {
 				axios.get('/day/'+day).then(response => {
-					this.selectedDay = Day.fromJSON(response.data)
+					if (response.data) {
+						this.selectedDay = Day.fromJSON(response.data)
+					} else if (day == today()) {
+						this.selectedDay = new Day()
+					} else {
+						console.error('Day '+day+' not found in database.')
+					}
 				})
 			},
 			loadModal(modalName) {
@@ -75,11 +81,7 @@ axios.get('/languages').then(response => {
 				this.modalComments = ''
 				this.modalDrops = DEFAULT_DROPS
 				let today = moment().format('YYYY-MM-DD')
-				if (this.hasDataToday()) {
-					this.loadDay(today)
-				} else {
-					this.selectedDay = new Day()
-				}
+				this.loadDay(today)
 			},
 			add() {
 				switch (this.openedModal) {
