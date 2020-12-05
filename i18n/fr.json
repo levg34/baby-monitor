@@ -43,7 +43,8 @@
 		"add_bath": "Ajout bain",
 		"add_vitamin": "Ajout vitamine",
 		"add_vomit": "Ajout vomi",
-		"comments": "Commentaires"
+		"comments": "Commentaires",
+		"add_null": "Ajout de quelque chose"
 	},
 	"footer": {
 		"made_by": "Auteur :"
