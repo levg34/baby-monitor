@@ -117,7 +117,7 @@
               </tr>
             </tbody>
           </table>                                                                                                             
-          <table class="table table-bordered">
+          <table class="table table-bordered" v-if="selectedDay.drinks.length > 0">
             <thead>
               <tr>
                 <th scope="col">{{$t("main.drinks")}}</th>
@@ -139,7 +139,7 @@
               </tr>
             </tbody>
           </table>
-          <table class="table table-bordered">
+          <table class="table table-bordered" v-if="selectedDay.changes.length > 0">
             <thead>
               <tr>
                 <th scope="col">{{$t("main.changes")}}</th>
