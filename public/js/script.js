@@ -30,6 +30,9 @@ axios.get('/languages').then(response => {
 			},
 			loadModal(modalName) {
 				mainVue.loadModal(modalName)
+			},
+			loadOptionsModal() {
+				mainVue.loadOptionsModal()
 			}
 		}
 	}).$mount('#nav')
@@ -48,10 +51,14 @@ axios.get('/languages').then(response => {
 			modalSoap: false,
 			modalComments: '',
 			modalDrops: 0,
-			modalVitamin: false
+			modalVitamin: false,
+			options: null,
+			modalDefaultVolume: 0,
+			modalDefaultDrops: 0
 		},
 		mounted() {
 			this.loadDays()
+			this.loadOptions()
 		},
 		methods: {
 			localeDate: function (date) {
@@ -71,16 +78,21 @@ axios.get('/languages').then(response => {
 					}
 				})
 			},
+			loadOptions() {
+				axios.get('/options').then(response => {
+					this.options = Options.fromJSON(response.data)
+				})
+			},
 			loadModal(modalName) {
 				this.openedModal = modalName
 				this.modalTime = now()
 				this.modalPee = true
 				this.modalPoo = false
-				this.modalTotalVolume = DEFAULT_VOLUME
+				this.modalTotalVolume = this.options.defaults.volume
 				this.modalLeftVolume = 0
 				this.modalSoap = false
 				this.modalComments = ''
-				this.modalDrops = DEFAULT_DROPS
+				this.modalDrops = this.options.defaults.drops
 				this.modalVitamin = false
 				let today = moment().format('YYYY-MM-DD')
 				this.loadDay(today)
@@ -141,6 +153,20 @@ axios.get('/languages').then(response => {
 						this.loadDay(lastDay)
 					}
 				})
+			},
+			loadOptionsModal() {
+				this.loadOptions()
+				this.modalDefaultDrops = this.options.defaults.drops
+				this.modalDefaultVolume = this.options.defaults.volume
+			},
+			saveOptions() {
+				axios.post('/options',{defaults:{
+					volume: this.modalDefaultVolume,
+					drops: this.modalDefaultDrops
+				}}).then(response => {
+					this.loadOptions()
+				})
+				$('#optionsModal').modal('hide')
 			}
 		}
 	}).$mount('#main')

@@ -162,3 +162,25 @@ class Vomit {
 		return new Vomit(object.time,object.comments)
 	}
 }
+
+class Options {
+	constructor(defaults) {
+		this.defaults = {
+			volume: DEFAULT_VOLUME,
+			drops: DEFAULT_DROPS
+		}
+		if (defaults) {
+			Object.assign(this.defaults, defaults)
+		}
+	}
+
+	static fromJSON(object) {
+		if (!object) {
+			return new Options()
+		} else if (object.defaults) {
+			return new Options(object.defaults)
+		} else {
+			return new Options()
+		}
+	}
+}

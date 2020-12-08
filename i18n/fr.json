@@ -16,7 +16,8 @@
 		"vomit": "Vomi",
 		"export": "Exporter",
 		"print": "Imprimer",
-		"language": "Langue"
+		"language": "Langue",
+		"options": "Options"
 	},
 	"main": {
 		"title1": "Les plus utilisés",
@@ -44,7 +45,8 @@
 		"add_vitamin": "Ajout vitamine",
 		"add_vomit": "Ajout vomi",
 		"comments": "Commentaires",
-		"add_null": "Ajout de quelque chose"
+		"add_null": "Ajout de quelque chose",
+		"save": "Enregistrer"
 	},
 	"footer": {
 		"made_by": "Auteur :"

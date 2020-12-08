@@ -7,9 +7,11 @@ const fs = require('fs')
 
 const Datastore = require('nedb')
 
-const db = new Datastore({ filename: 'data/datafile', autoload: true })
+const db = {}
+db.data = new Datastore({ filename: 'data/datafile', autoload: true })
+db.options = new Datastore({ filename: 'data/options', autoload: true })
 
-db.ensureIndex({ fieldName: 'date', unique: true }, function (err) {
+db.data.ensureIndex({ fieldName: 'date', unique: true }, function (err) {
 	if (err) console.log(err)
 })
 
@@ -44,7 +46,7 @@ app.get('/languages', (req, res) => {
 
 app.get('/day/:day', (req, res) => {
 	let day = req.params.day
-	db.findOne({ date: day }, function (err, doc) {
+	db.data.findOne({ date: day }, function (err, doc) {
 		res.json(doc)
 	})
 })
@@ -53,21 +55,44 @@ app.post('/day', (req, res) => {
 	let day = req.body
 	if (day._id) {
 		// update
-		db.update({ _id: day._id }, day, {}, function (err, numReplaced) {
+		db.data.update({ _id: day._id }, day, {}, function (err, numReplaced) {
 			//if (numReplaced === 1)
 			res.json(day)
 		});
 	} else {
 		// insert
-		db.insert(day, function (err, newDay) {
+		db.data.insert(day, function (err, newDay) {
 			res.json(newDay)
 		})
 	}
 })
 
 app.get('/days', (req, res) => {
-	db.find({}, { date: 1, _id: 0 }).sort({date: -1}).exec(function (err, docs) {
+	db.data.find({}, { date: 1, _id: 0 }).sort({date: -1}).exec(function (err, docs) {
 		res.json(docs.map(d=>d.date))
+	})
+})
+
+app.get('/options', (req, res) => {
+	db.options.findOne({}, {_id: 0}, function (err, doc) {
+		res.json(doc)
+	})
+})
+
+app.post('/options', (req, res) => {
+	let options = req.body
+	db.options.findOne({}, function (err, doc) {
+		if (doc && doc._id) {
+			// update
+			db.options.update({ _id: doc._id }, options, {}, function (err, numReplaced) {
+				res.json(options)
+			});
+		} else {
+			// insert
+			db.options.insert(options, function (err, newOptions) {
+				res.json(newOptions)
+			})
+		}
 	})
 })
 
