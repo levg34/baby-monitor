@@ -47,7 +47,8 @@ axios.get('/languages').then(response => {
 			modalLeftVolume: 0,
 			modalSoap: false,
 			modalComments: '',
-			modalDrops: 0
+			modalDrops: 0,
+			modalVitamin: false
 		},
 		mounted() {
 			this.loadDays()
@@ -80,6 +81,7 @@ axios.get('/languages').then(response => {
 				this.modalSoap = false
 				this.modalComments = ''
 				this.modalDrops = DEFAULT_DROPS
+				this.modalVitamin = false
 				let today = moment().format('YYYY-MM-DD')
 				this.loadDay(today)
 			},
@@ -98,6 +100,12 @@ axios.get('/languages').then(response => {
 							newDrink.leftVolume = this.modalLeftVolume
 						}
 						this.selectedDay.addDrink(newDrink)
+						if (!this.modalVitamin) {
+							break;
+						}
+					case 'vitamin':
+						let newVitamin = new Vitamin(this.modalTime,this.modalDrops)
+						this.selectedDay.setVitamin(newVitamin)
 						break;
 					case 'bath':
 						let newBath = new Bath(this.modalTime,this.modalSoap)
@@ -109,10 +117,6 @@ axios.get('/languages').then(response => {
 							newVomit.comments = this.modalComments
 						}
 						this.selectedDay.addVomit(newVomit)
-						break;
-					case 'vitamin':
-						let newVitamin = new Vitamin(this.modalTime,this.modalDrops)
-						this.selectedDay.setVitamin(newVitamin)
 						break;
 					default:
 						console.error('Cannot open modal for '+this.openedModal)
