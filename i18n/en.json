@@ -16,7 +16,8 @@
 		"vomit": "Vomit",
 		"export": "Export",
 		"print": "Print",
-		"language": "Language"
+		"language": "Language",
+		"options": "Options"
 	},
 	"main": {
 		"title1": "Most used features",
@@ -44,7 +45,8 @@
 		"add_vitamin": "Add vitamin",
 		"add_vomit": "Add vomit",
 		"comments": "Comments",
-		"add_null": "Add something"
+		"add_null": "Add something",
+		"save": "Save"
 	},
 	"footer": {
 		"made_by": "Made by"
