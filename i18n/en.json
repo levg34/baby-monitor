@@ -48,6 +48,10 @@
 		"add_null": "Add something",
 		"save": "Save"
 	},
+	"statistics": {
+		"title1": "Statistics",
+		"average": "Average"
+	},
 	"footer": {
 		"made_by": "Made by"
 	}

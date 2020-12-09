@@ -172,6 +172,100 @@ axios.get('/languages').then(response => {
 	}).$mount('#main')
 
 	new Vue({
+		i18n,
+		data: {
+			daysData: null
+		},
+		mounted() {
+			this.getDaysData()
+		},
+		methods: {
+			getDaysData() {
+				axios.get('/days/all').then(response => {
+					this.daysData = response.data
+					this.createGraph()
+				})
+			},
+			createGraph() {
+				new Chart(document.getElementById('drinkVolumePerDayChart').getContext('2d'), {
+					// The type of chart we want to create
+					type: 'line',
+
+					// The data for our dataset
+					data: {
+						labels: this.daysData.map(d=>d.date),
+						datasets: [
+							{
+								label: this.$t("main.volume_drunk"),
+								borderColor: 'rgb(255, 99, 132)',
+								data: this.daysData.map(d=>Day.fromJSON(d).totalDrankVolume())
+							},
+							{
+								label: this.$t("main.volume_served"),
+								borderColor: 'rgb(77, 166, 255)',
+								data: this.daysData.map(d=>Day.fromJSON(d).totalServedVolume())
+							},
+							{
+								label: this.$t("main.volume_drunk")+' ('+this.$t("statistics.average")+')',
+								borderColor: 'rgb(61,255,74)',
+								data: this.daysData.map(d=>Day.fromJSON(d).averageDrankVolume())
+							}
+						]
+					},
+
+					// Configuration options go here
+					options: {}
+				})
+
+				new Chart(document.getElementById('drinksPerDayChart').getContext('2d'), {
+					// The type of chart we want to create
+					type: 'bar',
+
+					// The data for our dataset
+					data: {
+						labels: this.daysData.map(d=>d.date),
+						datasets: [
+							{
+								label: this.$t("main.drinks"),
+								backgroundColor: 'rgb(255, 99, 132)',
+								data: this.daysData.map(d=>d.drinks.length)
+							}
+						]
+					},
+
+					// Configuration options go here
+					options: {}
+				})
+
+				new Chart(document.getElementById('changesPerDayChart').getContext('2d'), {
+					// The type of chart we want to create
+					type: 'bar',
+
+					// The data for our dataset
+					data: {
+						labels: this.daysData.map(d=>d.date),
+						datasets: [
+							{
+								label: this.$t("main.changes"),
+								backgroundColor: 'rgb(255, 99, 132)',
+								data: this.daysData.map(d=>d.changes.length)
+							},
+							{
+								label: this.$t("main.poo"),
+								backgroundColor: 'rgb(77, 166, 255)',
+								data: this.daysData.map(d=>Day.fromJSON(d).totalPoo())
+							}
+						]
+					},
+
+					// Configuration options go here
+					options: {}
+				})
+			}
+		}
+	}).$mount('#statistics')
+
+	new Vue({
 		i18n
 	}).$mount('#footer')
 })

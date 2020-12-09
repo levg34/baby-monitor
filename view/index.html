@@ -272,6 +272,13 @@
       </div>
     </div>
 
+    <div class="container" style="margin-top:30px" id="statistics">
+      <h2>{{$t("statistics.title1")}}</h2>
+      <canvas id="drinkVolumePerDayChart"></canvas>
+      <canvas id="drinksPerDayChart"></canvas>
+      <canvas id="changesPerDayChart"></canvas>
+    </div>
+
     <div id="footer" class="jumbotron text-center" style="margin-bottom:0">
       <p>{{$t("footer.made_by")}} <a href="https://levg34.github.io">levg34</a></p>
     </div>
@@ -283,8 +290,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/e05e19b5ea.js" crossorigin="anonymous"></script>
     
-    <!-- Inside libs -->
+    <!-- Other libs -->
     <script src="js/libs/moment-with-locales.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
     
     <!-- vuejs -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>

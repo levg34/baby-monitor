@@ -51,9 +51,21 @@ class Day {
 	totalDrankVolume() {
 		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b)
 	}
+
+	totalServedVolume() {
+		return this.drinks.map(d => d.totalVolume).reduce((a,b)=>1*a+1*b)
+	}
+
+	averageDrankVolume() {
+		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b) / this.drinks.length
+	}
 	
 	didPoo() {
 		return this.changes.map(c => c.poo).reduce((a,b)=>a||b)
+	}
+
+	totalPoo() {
+		return this.changes.map(c => c.poo).filter(Boolean).length
 	}
 	
 	totalDrinks() {

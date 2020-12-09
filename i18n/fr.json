@@ -48,6 +48,10 @@
 		"add_null": "Ajout de quelque chose",
 		"save": "Enregistrer"
 	},
+	"statistics": {
+		"title1": "Statistiques",
+		"average": "Moyenne"
+	},
 	"footer": {
 		"made_by": "Auteur :"
 	}
