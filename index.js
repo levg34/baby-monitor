@@ -73,6 +73,12 @@ app.get('/days', (req, res) => {
 	})
 })
 
+app.get('/days/all', (req, res) => {
+	db.data.find({}, { _id: 0 }).sort({date: 1}).exec(function (err, docs) {
+		res.json(docs)
+	})
+})
+
 app.get('/options', (req, res) => {
 	db.options.findOne({}, {_id: 0}, function (err, doc) {
 		res.json(doc)
