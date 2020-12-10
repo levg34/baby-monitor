@@ -53,7 +53,7 @@ class Day {
 	}
 
 	totalServedVolume() {
-		return this.drinks.map(d => d.totalVolume).reduce((a,b)=>1*a+1*b)
+		return this.drinks.map(d => d.totalVolume).reduce((a,b)=>a+b)
 	}
 
 	averageDrankVolume() {
@@ -73,6 +73,12 @@ class Day {
 	}
 	
 	static fromJSON(object) {
+		if (object.weight) {
+			object.weight = new Number(object.weight)
+		}
+		if (object.height) {
+			object.height = new Number(object.height)
+		}
 		if (object.bath) {
 			object.bath = Bath.fromJSON(object.bath)
 		}
@@ -112,18 +118,20 @@ class Drink {
 			this.time = now()
 		}
 		if (volume) {
-			this.totalVolume = volume
+			this.totalVolume = new Number(volume)
 		} else {
-			this.totalVolume = DEFAULT_VOLUME
+			this.totalVolume = new Number(DEFAULT_VOLUME)
 		}
-		this.leftVolume = 0
+		this.leftVolume = new Number(0)
 	}
 	
 	get drankVolume() {
-		return this.totalVolume - this.leftVolume
+		return new Number(this.totalVolume - this.leftVolume)
 	}
 	
 	static fromJSON(object) {
+		object.totalVolume = new Number(object.totalVolume)
+		object.leftVolume = new Number(object.leftVolume)
 		return Object.assign(new Drink(), object)
 	}
 }
@@ -150,7 +158,7 @@ class Vitamin {
 		} else {
 			this.time = now()
 		}
-		this.drops = drops
+		this.drops = new Number(drops)
 	}
 	
 	static fromJSON(object) {
