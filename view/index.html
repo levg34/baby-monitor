@@ -38,8 +38,8 @@
               {{$t("nav.add")}}
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">{{$t("nav.weight")}}</a>
-              <a class="dropdown-item" href="#">{{$t("nav.height")}}</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('weight')">{{$t("nav.weight")}}</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('height')">{{$t("nav.height")}}</a>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('bath')">{{$t("nav.bath")}}</a>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('vitamin')">{{$t("nav.vitamin")}}</a>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('vomit')">{{$t("nav.vomit")}}</a>
@@ -187,7 +187,7 @@
                   <option>4</option>
                 </select>
               </div-->
-              <div class="form-group">
+              <div class="form-group" v-if="openedModal != 'weight' && openedModal != 'height'">
                 <label for="time">{{$t("main.time")}}:</label>
                 <input type="time" class="form-control" id="time" v-model="modalTime">
               </div>
@@ -210,7 +210,7 @@
                 </div>
                 <div class="form-group">
                   <label for="left_volume">{{$t("main.left_volume")}}:</label>
-                  <input type="number" step="1" class="form-control" id="total_volume" v-model="modalLeftVolume">
+                  <input type="number" step="1" class="form-control" id="left_volume" v-model="modalLeftVolume">
                 </div>
                 <div class="form-group form-check">
                   <label class="form-check-label">
@@ -227,14 +227,26 @@
               </div>
               <div v-if="openedModal == 'vomit'">
                 <div class="form-group">
-                  <label for="left_volume">{{$t("main.comments")}}:</label>
-                  <input type="text" class="form-control" id="total_volume" v-model="modalComments">
+                  <label for="comments">{{$t("main.comments")}}:</label>
+                  <input id="comments" type="text" class="form-control" v-model="modalComments">
                 </div>
               </div>
               <div v-if="openedModal == 'vitamin' || modalVitamin">
                 <div class="form-group">
-                  <label for="left_volume">{{$t("main.drops")}}:</label>
-                  <input type="number" step="1" class="form-control" id="total_volume" v-model="modalDrops">
+                  <label for="drops">{{$t("main.drops")}}:</label>
+                  <input id="drops" type="number" step="1" class="form-control" v-model="modalDrops">
+                </div>
+              </div>
+              <div v-if="openedModal == 'weight'">
+                <div class="form-group">
+                  <label for="weight">{{$t("nav.weight")}} (g):</label>
+                  <input id="weight" type="number" step="1" class="form-control" v-model="modalWeight">
+                </div>
+              </div>
+              <div v-if="openedModal == 'height'">
+                <div class="form-group">
+                  <label for="height">{{$t("nav.height")}} (cm):</label>
+                  <input id="height" type="number" step="1" class="form-control" v-model="modalHeight">
                 </div>
               </div>
             </div>
@@ -260,7 +272,7 @@
               </div>
               <div class="form-group">
                 <label for="left_volume">{{$t("main.drops")}}:</label>
-                <input type="number" step="1" class="form-control" id="total_volume" v-model="modalDefaultDrops">
+                <input type="number" step="1" class="form-control" id="left_volume" v-model="modalDefaultDrops">
               </div>
             </div>
             <div class="modal-footer">

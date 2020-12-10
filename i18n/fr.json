@@ -46,7 +46,9 @@
 		"add_vomit": "Ajout vomi",
 		"comments": "Commentaires",
 		"add_null": "Ajout de quelque chose",
-		"save": "Enregistrer"
+		"save": "Enregistrer",
+		"add_weight": "Ajout poids",
+		"add_height": "Ajout taille"
 	},
 	"statistics": {
 		"title1": "Statistiques",

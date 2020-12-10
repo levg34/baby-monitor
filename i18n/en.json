@@ -46,7 +46,9 @@
 		"add_vomit": "Add vomit",
 		"comments": "Comments",
 		"add_null": "Add something",
-		"save": "Save"
+		"save": "Save",
+		"add_weight": "Add weight",
+		"add_height": "Add height"
 	},
 	"statistics": {
 		"title1": "Statistics",

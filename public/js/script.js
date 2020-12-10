@@ -54,7 +54,9 @@ axios.get('/languages').then(response => {
 			modalVitamin: false,
 			options: null,
 			modalDefaultVolume: 0,
-			modalDefaultDrops: 0
+			modalDefaultDrops: 0,
+			modalWeight: 0,
+			modalHeight: 0
 		},
 		mounted() {
 			this.loadDays()
@@ -94,6 +96,8 @@ axios.get('/languages').then(response => {
 				this.modalComments = ''
 				this.modalDrops = this.options.defaults.drops
 				this.modalVitamin = false
+				this.modalWeight = 0
+				this.modalHeight = 0
 				let today = moment().format('YYYY-MM-DD')
 				this.loadDay(today)
 			},
@@ -130,8 +134,14 @@ axios.get('/languages').then(response => {
 						}
 						this.selectedDay.addVomit(newVomit)
 						break;
+					case 'weight':
+						this.selectedDay.weight = Number.parseInt(this.modalWeight)
+						break
+					case 'height':
+						this.selectedDay.height = Number.parseInt(this.modalHeight)
+						break
 					default:
-						console.error('Cannot open modal for '+this.openedModal)
+						console.error('Cannot write data for '+this.openedModal)
 						break;
 				}
 				
