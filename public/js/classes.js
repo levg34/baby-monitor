@@ -74,10 +74,10 @@ class Day {
 	
 	static fromJSON(object) {
 		if (object.weight) {
-			object.weight = new Number(object.weight)
+			object.weight = Number.parseInt(object.weight)
 		}
 		if (object.height) {
-			object.height = new Number(object.height)
+			object.height = Number.parseInt(object.height)
 		}
 		if (object.bath) {
 			object.bath = Bath.fromJSON(object.bath)
@@ -118,20 +118,20 @@ class Drink {
 			this.time = now()
 		}
 		if (volume) {
-			this.totalVolume = new Number(volume)
+			this.totalVolume = Number.parseInt(volume)
 		} else {
-			this.totalVolume = new Number(DEFAULT_VOLUME)
+			this.totalVolume = DEFAULT_VOLUME
 		}
-		this.leftVolume = new Number(0)
+		this.leftVolume = 0
 	}
 	
 	get drankVolume() {
-		return new Number(this.totalVolume - this.leftVolume)
+		return this.totalVolume - this.leftVolume
 	}
 	
 	static fromJSON(object) {
-		object.totalVolume = new Number(object.totalVolume)
-		object.leftVolume = new Number(object.leftVolume)
+		object.totalVolume = Number.parseInt(object.totalVolume)
+		object.leftVolume = Number.parseInt(object.leftVolume)
 		return Object.assign(new Drink(), object)
 	}
 }
@@ -158,7 +158,7 @@ class Vitamin {
 		} else {
 			this.time = now()
 		}
-		this.drops = new Number(drops)
+		this.drops = Number.parseInt(drops)
 	}
 	
 	static fromJSON(object) {
