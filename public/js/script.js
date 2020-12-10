@@ -109,7 +109,7 @@ axios.get('/languages').then(response => {
 					case 'drink':
 						let newDrink = new Drink(this.modalTime,this.modalTotalVolume)
 						if (this.modalLeftVolume) {
-							newDrink.leftVolume = this.modalLeftVolume
+							newDrink.leftVolume = new Number(this.modalLeftVolume)
 						}
 						this.selectedDay.addDrink(newDrink)
 						if (!this.modalVitamin) {
