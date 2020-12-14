@@ -56,7 +56,8 @@ axios.get('/languages').then(response => {
 			modalDefaultVolume: 0,
 			modalDefaultDrops: 0,
 			modalWeight: 0,
-			modalHeight: 0
+			modalHeight: 0,
+			modalPooLevel: 0
 		},
 		mounted() {
 			this.loadDays()
@@ -98,13 +99,17 @@ axios.get('/languages').then(response => {
 				this.modalVitamin = false
 				this.modalWeight = 0
 				this.modalHeight = 0
+				this.modalPooLevel = 2
 				let today = moment().format('YYYY-MM-DD')
 				this.loadDay(today)
 			},
 			add() {
 				switch (this.openedModal) {
 					case 'change':
-						let newChange = new Change(this.modalTime,this.modalPoo)
+						let newChange = new Change(this.modalTime)
+						if (this.modalPoo) {
+							newChange.poo = Number.parseInt(this.modalPooLevel)
+						}
 						if (!this.modalPee) {
 							newChange.pee = false
 						}

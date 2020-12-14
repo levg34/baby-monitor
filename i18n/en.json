@@ -48,7 +48,11 @@
 		"add_null": "Add something",
 		"save": "Save",
 		"add_weight": "Add weight",
-		"add_height": "Add height"
+		"add_height": "Add height",
+		"poo_level": "Poo quantity",
+		"low_poo_level": "Low",
+		"normal_poo_level": "Normal",
+		"high_poo_level": "High"
 	},
 	"statistics": {
 		"title1": "Statistics",
