@@ -1,11 +1,3 @@
-function today() {
-	return moment().format('YYYY-MM-DD')
-}
-
-function now() {
-	return moment().format('HH:mm')
-}
-
 let DEFAULT_VOLUME = 170
 let DEFAULT_DROPS = 3
 
@@ -14,7 +6,7 @@ class Day {
 		if (date) {
 			this.date = date
 		} else {
-			this.date = today()
+			this.date = TimeUtils.today()
 		}
 		this.weight = null
 		this.height = null
@@ -99,7 +91,7 @@ class Change {
 		if (time) {
 			this.time = time
 		} else {
-			this.time = now()
+			this.time = TimeUtils.now()
 		}
 		this.pee = true
 		this.poo = poo || 0
@@ -115,7 +107,7 @@ class Drink {
 		if (time) {
 			this.time = time
 		} else {
-			this.time = now()
+			this.time = TimeUtils.now()
 		}
 		if (volume) {
 			this.totalVolume = Number.parseInt(volume)
@@ -141,7 +133,7 @@ class Bath {
 		if (time) {
 			this.time = time
 		} else {
-			this.time = now()
+			this.time = TimeUtils.now()
 		}
 		this.soap = (soap === true)
 	}
@@ -156,7 +148,7 @@ class Vitamin {
 		if (time) {
 			this.time = time
 		} else {
-			this.time = now()
+			this.time = TimeUtils.now()
 		}
 		this.drops = Number.parseInt(drops)
 	}
@@ -171,7 +163,7 @@ class Vomit {
 		if (time) {
 			this.time = time
 		} else {
-			this.time = now()
+			this.time = TimeUtils.now()
 		}
 		if (comments) {
 			this.comments = comments

@@ -68,13 +68,13 @@ axios.get('/languages').then(response => {
 				return moment(date).locale(i18n.locale).format('L')
 			},
 			hasDataToday() {
-				return this.days.includes(moment().format('YYYY-MM-DD'))
+				return this.days.includes(TimeUtils.today())
 			},
 			loadDay(day) {
 				axios.get('/day/'+day).then(response => {
 					if (response.data) {
 						this.selectedDay = Day.fromJSON(response.data)
-					} else if (day == today()) {
+					} else if (day == TimeUtils.today()) {
 						this.selectedDay = new Day()
 					} else {
 						console.error('Day '+day+' not found in database.')
@@ -88,7 +88,7 @@ axios.get('/languages').then(response => {
 			},
 			loadModal(modalName) {
 				this.openedModal = modalName
-				this.modalTime = now()
+				this.modalTime = TimeUtils.now()
 				this.modalPee = true
 				this.modalPoo = false
 				this.modalTotalVolume = this.options.defaults.volume
@@ -100,8 +100,7 @@ axios.get('/languages').then(response => {
 				this.modalWeight = 0
 				this.modalHeight = 0
 				this.modalPooLevel = 2
-				let today = moment().format('YYYY-MM-DD')
-				this.loadDay(today)
+				this.loadDay(TimeUtils.today())
 			},
 			add() {
 				switch (this.openedModal) {
