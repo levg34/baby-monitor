@@ -49,23 +49,23 @@ class Day {
 	}
 	
 	totalDrankVolume() {
-		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b)
+		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b,0)
 	}
 
 	totalServedVolume() {
-		return this.drinks.map(d => d.totalVolume).reduce((a,b)=>a+b)
+		return this.drinks.map(d => d.totalVolume).reduce((a,b)=>a+b,0)
 	}
 
 	averageDrankVolume() {
-		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b) / this.drinks.length
+		return this.drinks.map(d => d.drankVolume).reduce((a,b)=>a+b,0) / this.drinks.length
 	}
 	
 	didPoo() {
-		return this.changes.map(c => c.poo).reduce((a,b)=>a||b)
+		return this.changes.map(c => c.poo).reduce((a,b)=>a+b,0) > 0
 	}
 
 	totalPoo() {
-		return this.changes.map(c => c.poo).filter(Boolean).length
+		return this.changes.map(c => c.poo).map(Number).filter(Boolean).length
 	}
 	
 	totalDrinks() {
@@ -102,7 +102,7 @@ class Change {
 			this.time = now()
 		}
 		this.pee = true
-		this.poo = poo || false
+		this.poo = poo || 0
 	}
 	
 	static fromJSON(object) {

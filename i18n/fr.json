@@ -48,7 +48,11 @@
 		"add_null": "Ajout de quelque chose",
 		"save": "Enregistrer",
 		"add_weight": "Ajout poids",
-		"add_height": "Ajout taille"
+		"add_height": "Ajout taille",
+		"poo_level": "Quantité de caca",
+		"low_poo_level": "Faible",
+		"normal_poo_level": "Normale",
+		"high_poo_level": "Élevée"
 	},
 	"statistics": {
 		"title1": "Statistiques",
