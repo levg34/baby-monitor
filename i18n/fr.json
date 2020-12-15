@@ -52,7 +52,8 @@
 		"poo_level": "Quantité de caca",
 		"low_poo_level": "Faible",
 		"normal_poo_level": "Normale",
-		"high_poo_level": "Élevée"
+		"high_poo_level": "Élevée",
+		"see_more": "Voir plus de jours..."
 	},
 	"statistics": {
 		"title1": "Statistiques",

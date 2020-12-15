@@ -57,7 +57,8 @@ axios.get('/languages').then(response => {
 			modalDefaultDrops: 0,
 			modalWeight: 0,
 			modalHeight: 0,
-			modalPooLevel: 0
+			modalPooLevel: 0,
+			showLess: true
 		},
 		mounted() {
 			this.loadDays()

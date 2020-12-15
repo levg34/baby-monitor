@@ -52,7 +52,8 @@
 		"poo_level": "Poo quantity",
 		"low_poo_level": "Low",
 		"normal_poo_level": "Normal",
-		"high_poo_level": "High"
+		"high_poo_level": "High",
+		"see_more": "See more data..."
 	},
 	"statistics": {
 		"title1": "Statistics",
