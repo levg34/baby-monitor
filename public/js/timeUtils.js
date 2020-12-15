@@ -7,7 +7,7 @@ class TimeUtils {
     static now() {
         let date = new Date()
         let hours = ('00'+date.getHours()).slice(-2)
-        let minutes = ('00'+date.getMinutes()).slice(-2)
+        let minutes = ('00'+(Math.floor(date.getMinutes()/5)*5)).slice(-2)
         return hours+':'+minutes
     }
 }
