@@ -79,10 +79,13 @@
             <li class="nav-item" v-if="!hasDataToday()">
               <a class="nav-link disabled" href="#">{{localeDate()}}</a>
             </li>
-            <li class="nav-item" v-if="selectedDay && selectedDay.date" v-for="day in days">
+            <li class="nav-item" v-if="selectedDay && selectedDay.date" v-for="day in (showLess ? days.slice(0,3) : days)">
               <a class="nav-link" href="#" :class="{ active: day === selectedDay.date }" v-on:click="loadDay(day)">{{localeDate(day)}}</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="showLess">
+              <a class="nav-link" href="#" v-on:click.prevent="showLess=false">{{$t("main.see_more")}}</a>
+            </li>
+            <li class="nav-item" v-if="!showLess">
               <a class="nav-link disabled" href="#">{{$t("main.no_data")}}</a>
             </li>
           </ul>
