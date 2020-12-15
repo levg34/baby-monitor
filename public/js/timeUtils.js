@@ -5,7 +5,9 @@ class TimeUtils {
     }
 
     static now() {
-        let dateString = new Date().toISOString()
-        return dateString.slice(dateString.indexOf('T')+1,dateString.lastIndexOf(':'))
+        let date = new Date()
+        let hours = ('00'+date.getHours()).slice(-2)
+        let minutes = ('00'+date.getMinutes()).slice(-2)
+        return hours+':'+minutes
     }
 }
