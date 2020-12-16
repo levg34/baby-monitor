@@ -192,14 +192,33 @@ axios.get('/languages').then(response => {
 			daysData: null
 		},
 		mounted() {
-			this.getDaysData()
+			this.getDaysData('week')
 		},
 		methods: {
-			getDaysData() {
-				axios.get('/days/all').then(response => {
+			getDaysData(interval) {
+				let displayGraph = response => {
 					this.daysData = response.data
-					this.createGraph()
-				})
+					if (response.data) {
+						this.createGraph()
+					}
+				}
+
+				if (interval instanceof Object && interval.to && interval.from) {
+					axios.get('/days/'+interval.from+'/'+interval.to).then(displayGraph)
+				} else if (interval === 'today') {
+					this.getDaysData({
+						from: TimeUtils.today(),
+						to: TimeUtils.today()
+					})
+				} else if (interval === 'week') {
+					let week = TimeUtils.oneWeekInterval()
+					this.getDaysData({
+						from: week[0],
+						to: week[1]
+					})
+				} else {
+					axios.get('/days/all').then(displayGraph)
+				}
 			},
 			createGraph() {
 				new Chart(document.getElementById('drinkVolumePerDayChart').getContext('2d'), {
