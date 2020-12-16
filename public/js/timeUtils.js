@@ -10,4 +10,11 @@ class TimeUtils {
         let minutes = ('00'+(Math.floor(date.getMinutes()/5)*5)).slice(-2)
         return hours+':'+minutes
     }
+
+    static localeDate(date,locale) {
+        if (!date) {
+            date = this.today()
+        }
+        return new Intl.DateTimeFormat(locale).format(new Date(date))
+    }
 }

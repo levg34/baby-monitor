@@ -66,7 +66,7 @@ axios.get('/languages').then(response => {
 		},
 		methods: {
 			localeDate: function (date) {
-				return moment(date).locale(i18n.locale).format('L')
+				return TimeUtils.localeDate(date,i18n.locale)
 			},
 			hasDataToday() {
 				return this.days.includes(TimeUtils.today())
@@ -208,7 +208,7 @@ axios.get('/languages').then(response => {
 
 					// The data for our dataset
 					data: {
-						labels: this.daysData.map(d=>d.date),
+						labels: this.daysData.map(d=>mainVue.localeDate(d.date)),
 						datasets: [
 							{
 								label: this.$t("main.volume_drunk"),
@@ -238,7 +238,7 @@ axios.get('/languages').then(response => {
 
 					// The data for our dataset
 					data: {
-						labels: this.daysData.map(d=>d.date),
+						labels: this.daysData.map(d=>mainVue.localeDate(d.date)),
 						datasets: [
 							{
 								label: this.$t("main.drinks"),
@@ -258,7 +258,7 @@ axios.get('/languages').then(response => {
 
 					// The data for our dataset
 					data: {
-						labels: this.daysData.map(d=>d.date),
+						labels: this.daysData.map(d=>mainVue.localeDate(d.date)),
 						datasets: [
 							{
 								label: this.$t("main.changes"),
