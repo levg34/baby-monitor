@@ -57,7 +57,11 @@
 	},
 	"statistics": {
 		"title1": "Statistics",
-		"average": "Average"
+		"average": "Average",
+		"data_span": "See data for",
+		"today": "Today",
+		"past_week": "Past week",
+		"all": "All time"
 	},
 	"footer": {
 		"made_by": "Made by"

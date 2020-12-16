@@ -189,10 +189,11 @@ axios.get('/languages').then(response => {
 	new Vue({
 		i18n,
 		data: {
-			daysData: null
+			daysData: null,
+			dataSpan: 'week'
 		},
 		mounted() {
-			this.getDaysData('week')
+			this.getDaysData(this.dataSpan)
 		},
 		methods: {
 			getDaysData(interval) {

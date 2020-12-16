@@ -57,7 +57,11 @@
 	},
 	"statistics": {
 		"title1": "Statistiques",
-		"average": "Moyenne"
+		"average": "Moyenne",
+		"data_span": "Voir les statistiques pour",
+		"today": "Aujourd'hui",
+		"past_week": "Cette semaine",
+		"all": "Tout"
 	},
 	"footer": {
 		"made_by": "Auteur :"
