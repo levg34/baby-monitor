@@ -79,6 +79,14 @@ app.get('/days/all', (req, res) => {
 	})
 })
 
+app.get('/days/:from/:to', (req, res) => {
+	let from = req.params.from
+	let to = req.params.to
+	db.data.find({$and:[{"date": { $gte: from }}, {"date": { $lte: to }}]}, { _id: 0 }).sort({date: 1}).exec(function (err, docs) {
+		res.json(docs)
+	})
+})
+
 app.get('/options', (req, res) => {
 	db.options.findOne({}, {_id: 0}, function (err, doc) {
 		res.json(doc)
