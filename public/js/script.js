@@ -33,6 +33,9 @@ axios.get('/languages').then(response => {
 			},
 			loadOptionsModal() {
 				mainVue.loadOptionsModal()
+			},
+			showStatistics() {
+				statisticsView.show()
 			}
 		}
 	}).$mount('#nav')
@@ -186,17 +189,21 @@ axios.get('/languages').then(response => {
 		}
 	}).$mount('#main')
 
-	new Vue({
+	let statisticsView = new Vue({
 		i18n,
 		data: {
 			daysData: null,
 			dataSpan: 'week',
-			charts: []
-		},
-		mounted() {
-			this.getDaysData(this.dataSpan)
+			charts: [],
+			visible: false
 		},
 		methods: {
+			show() {
+				this.visible = !this.visible
+				if (this.visible) {
+					this.getDaysData(this.dataSpan)
+				}
+			},
 			getDaysData(interval) {
 				let displayGraph = response => {
 					this.daysData = response.data
