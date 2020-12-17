@@ -190,7 +190,8 @@ axios.get('/languages').then(response => {
 		i18n,
 		data: {
 			daysData: null,
-			dataSpan: 'week'
+			dataSpan: 'week',
+			charts: []
 		},
 		mounted() {
 			this.getDaysData(this.dataSpan)
@@ -221,8 +222,14 @@ axios.get('/languages').then(response => {
 					axios.get('/days/all').then(displayGraph)
 				}
 			},
+			clearCharts() {
+				this.charts.forEach(chart => {
+					chart.destroy()
+				})
+			},
 			createGraph() {
-				new Chart(document.getElementById('drinkVolumePerDayChart').getContext('2d'), {
+				this.clearCharts()
+				this.charts.push(new Chart(document.getElementById('drinkVolumePerDayChart').getContext('2d'), {
 					// The type of chart we want to create
 					type: 'line',
 
@@ -250,9 +257,9 @@ axios.get('/languages').then(response => {
 
 					// Configuration options go here
 					options: {}
-				})
+				}))
 
-				new Chart(document.getElementById('drinksPerDayChart').getContext('2d'), {
+				this.charts.push(new Chart(document.getElementById('drinksPerDayChart').getContext('2d'), {
 					// The type of chart we want to create
 					type: 'bar',
 
@@ -270,9 +277,9 @@ axios.get('/languages').then(response => {
 
 					// Configuration options go here
 					options: {}
-				})
+				}))
 
-				new Chart(document.getElementById('changesPerDayChart').getContext('2d'), {
+				this.charts.push(new Chart(document.getElementById('changesPerDayChart').getContext('2d'), {
 					// The type of chart we want to create
 					type: 'bar',
 
@@ -295,7 +302,7 @@ axios.get('/languages').then(response => {
 
 					// Configuration options go here
 					options: {}
-				})
+				}))
 			}
 		}
 	}).$mount('#statistics')
