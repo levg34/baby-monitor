@@ -197,6 +197,13 @@ axios.get('/languages').then(response => {
 			charts: [],
 			visible: false
 		},
+		mounted() {
+			Chart.scaleService.updateScaleDefaults('linear', {
+				ticks: {
+					min: 0
+				}
+			});
+		},
 		methods: {
 			show() {
 				this.visible = !this.visible
@@ -216,7 +223,7 @@ axios.get('/languages').then(response => {
 					axios.get('/days/'+interval.from+'/'+interval.to).then(displayGraph)
 				} else if (interval === 'today') {
 					this.getDaysData({
-						from: TimeUtils.today(),
+						from: TimeUtils.dayBefore(),
 						to: TimeUtils.today()
 					})
 				} else if (interval === 'week') {
