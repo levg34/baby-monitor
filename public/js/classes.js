@@ -63,6 +63,16 @@ class Day {
 	totalDrinks() {
 		return this.drinks.length
 	}
+
+	sort() {
+		let sortByTime = (a,b) => a.time > b.time ? 1 : -1
+		this.drinks.sort(sortByTime)
+		this.changes.sort(sortByTime)
+		if (this.vomit instanceof Array) {
+			this.vomit.sort(sortByTime)
+		}
+		return this
+	}
 	
 	static fromJSON(object) {
 		if (object.weight) {
