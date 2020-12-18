@@ -77,7 +77,7 @@ axios.get('/languages').then(response => {
 			loadDay(day) {
 				axios.get('/day/'+day).then(response => {
 					if (response.data) {
-						this.selectedDay = Day.fromJSON(response.data)
+						this.selectedDay = Day.fromJSON(response.data).sort()
 					} else if (day == TimeUtils.today()) {
 						this.selectedDay = new Day()
 					} else {
@@ -158,7 +158,7 @@ axios.get('/languages').then(response => {
 				this.openedModal = null
 			},
 			saveDay() {
-				axios.post('/day',this.selectedDay).then(response => {
+				axios.post('/day',this.selectedDay.sort()).then(response => {
 					this.loadDays()
 				})
 			},
