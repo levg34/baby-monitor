@@ -9,6 +9,8 @@
 		"add": "Add",
 		"add_drink": "Add drink",
 		"add_change": "Add change",
+		"drink": "Drink",
+		"change": "Change",
 		"weight": "Weight",
 		"height": "Height",
 		"bath": "Bath",
@@ -17,7 +19,8 @@
 		"export": "Export",
 		"print": "Print",
 		"language": "Language",
-		"options": "Options"
+		"options": "Options",
+		"null": "Nothing"
 	},
 	"main": {
 		"title1": "Most used features",
@@ -53,7 +56,9 @@
 		"low_poo_level": "Low",
 		"normal_poo_level": "Normal",
 		"high_poo_level": "High",
-		"see_more": "See more data..."
+		"see_more": "See more data...",
+		"warning": "Warning!",
+		"already_found": "Found similar data in database:"
 	},
 	"statistics": {
 		"title1": "Statistics",

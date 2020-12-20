@@ -185,6 +185,46 @@ axios.get('/languages').then(response => {
 					this.loadOptions()
 				})
 				$('#optionsModal').modal('hide')
+			},
+			alreadyExists(dataType,time) {
+				let res = null
+				switch (dataType) {
+					case 'change':
+						res = this.selectedDay.changes.find(change=>change.time == time)
+						break
+					case 'drink':
+						res = this.selectedDay.drinks.find(drink=>drink.time == time)
+						break
+					case 'vitamin':
+						res = this.selectedDay.vitamin
+						break
+					case 'bath':
+						res = this.selectedDay.bath
+						break
+					case 'vomit':
+						if (this.selectedDay.vomit instanceof Array) {
+							res = this.selectedDay.vomit.find(vomit=>vomit.time == time)
+						}
+						break
+					case 'weight':
+						if (this.selectedDay.weight) {
+							res = `${this.selectedDay.weight} g`
+						}
+						break
+					case 'height':
+						if (this.selectedDay.height) {
+							res = `${this.selectedDay.height} cm`
+						}
+						break
+					case null:
+						break
+					default:
+						res = 'Cannot write data for '+dataType
+						console.error(res)
+						break
+				}
+
+				return res
 			}
 		}
 	}).$mount('#main')

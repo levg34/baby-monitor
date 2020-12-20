@@ -9,6 +9,8 @@
 		"add": "Ajouter",
 		"add_drink": "Ajouter tétée",
 		"add_change": "Ajouter change",
+		"drink": "Tétée",
+		"change": "Change",
 		"weight": "Poids",
 		"height": "Taille",
 		"bath": "Bain",
@@ -17,7 +19,8 @@
 		"export": "Exporter",
 		"print": "Imprimer",
 		"language": "Langue",
-		"options": "Options"
+		"options": "Options",
+		"null": "Rien"
 	},
 	"main": {
 		"title1": "Les plus utilisés",
@@ -53,7 +56,9 @@
 		"low_poo_level": "Faible",
 		"normal_poo_level": "Normale",
 		"high_poo_level": "Élevée",
-		"see_more": "Voir plus de jours..."
+		"see_more": "Voir plus de jours...",
+		"warning": "Attention !",
+		"already_found": "Donnée similaire déjà présente :"
 	},
 	"statistics": {
 		"title1": "Statistiques",
