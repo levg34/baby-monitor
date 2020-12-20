@@ -58,7 +58,12 @@
 		"high_poo_level": "High",
 		"see_more": "See more data...",
 		"warning": "Warning!",
-		"already_found": "Found similar data in database:"
+		"already_found": "Found similar data in database:",
+		"add_to_yesterday_question": "It looks like you want to add data to yesterday.",
+		"added_to_yesterday": "This will be added to yesterday.",
+		"add_to_day": "Add to",
+		"yesterday": "Yesterday",
+		"today": "Today"
 	},
 	"statistics": {
 		"title1": "Statistics",

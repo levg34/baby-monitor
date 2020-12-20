@@ -58,7 +58,12 @@
 		"high_poo_level": "Élevée",
 		"see_more": "Voir plus de jours...",
 		"warning": "Attention !",
-		"already_found": "Donnée similaire déjà présente :"
+		"already_found": "Donnée similaire déjà présente :",
+		"add_to_yesterday_question": "Voulez-vour ajouter cette donnée à la journée d'hier ?",
+		"added_to_yesterday": "Ceci sera ajouté à la journée d'hier.",
+		"add_to_day": "Ajouter à",
+		"yesterday": "Hier",
+		"today": "Aujourd'hui"
 	},
 	"statistics": {
 		"title1": "Statistiques",

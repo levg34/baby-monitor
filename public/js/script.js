@@ -61,7 +61,8 @@ axios.get('/languages').then(response => {
 			modalWeight: 0,
 			modalHeight: 0,
 			modalPooLevel: 0,
-			showLess: true
+			showLess: true,
+			modalDayToAdd: 'today'
 		},
 		mounted() {
 			this.loadDays()
@@ -104,6 +105,7 @@ axios.get('/languages').then(response => {
 				this.modalWeight = 0
 				this.modalHeight = 0
 				this.modalPooLevel = 2
+				this.modalDayToAdd = 'today'
 				this.loadDay(TimeUtils.today())
 			},
 			add() {
@@ -225,6 +227,16 @@ axios.get('/languages').then(response => {
 				}
 
 				return res
+			},
+			timeOverNow() {
+				return this.modalTime > TimeUtils.now()
+			},
+			loadSelectedDay() {
+				if (this.modalDayToAdd === 'yesterday' && this.selectedDay.date != TimeUtils.dayBefore()) {
+					this.loadDay(TimeUtils.dayBefore())
+				} else if (this.modalDayToAdd === 'today' && this.selectedDay.date != TimeUtils.today()) {
+					this.loadDay(TimeUtils.today())
+				}
 			}
 		}
 	}).$mount('#main')
