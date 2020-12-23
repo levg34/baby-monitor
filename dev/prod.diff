@@ -1,0 +1,13 @@
+diff --git a/view/index.html b/view/index.html
+index eaf472b..150e600 100644
+--- a/view/index.html
++++ b/view/index.html
+@@ -341,7 +341,7 @@
+     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+     
+     <!-- vuejs -->
+-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
++    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+     
