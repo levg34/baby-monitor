@@ -5,4 +5,8 @@ services:
     restart: always
     build: .
     ports:
-    - "80:8080"
+      - "80:8080"
+    volumes:
+      - data:/usr/src/app/data
+volumes:
+  data:
