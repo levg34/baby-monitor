@@ -62,7 +62,8 @@ axios.get('/languages').then(response => {
 			modalHeight: 0,
 			modalPooLevel: 0,
 			showLess: true,
-			modalDayToAdd: 'today'
+			modalDayToAdd: 'today',
+			modalTemp: false
 		},
 		mounted() {
 			this.loadDays()
@@ -92,6 +93,10 @@ axios.get('/languages').then(response => {
 				})
 			},
 			loadModal(modalName) {
+				// get latest data
+				this.loadDay(TimeUtils.today())
+
+				// default values
 				this.openedModal = modalName
 				this.modalTime = TimeUtils.now()
 				this.modalPee = true
@@ -106,7 +111,18 @@ axios.get('/languages').then(response => {
 				this.modalHeight = 0
 				this.modalPooLevel = 2
 				this.modalDayToAdd = 'today'
-				this.loadDay(TimeUtils.today())
+				this.modalTemp = false
+
+				// if we have a temp drink, load its data instead
+				if (modalName === 'drink') {
+					let tempDrink = this.selectedDay.tempDrink()
+					mainVue.$forceUpdate()
+					if (tempDrink) {
+						this.modalTime = tempDrink.time
+						this.modalTotalVolume = tempDrink.totalVolume
+						this.modalLeftVolume = tempDrink.leftVolume
+					}
+				}
 			},
 			add() {
 				switch (this.openedModal) {
@@ -124,6 +140,9 @@ axios.get('/languages').then(response => {
 						let newDrink = new Drink(this.modalTime,this.modalTotalVolume)
 						if (this.modalLeftVolume) {
 							newDrink.leftVolume = new Number(this.modalLeftVolume)
+						}
+						if (this.modalTemp) {
+							newDrink.temp = true
 						}
 						this.selectedDay.addDrink(newDrink)
 						if (!this.modalVitamin) {
