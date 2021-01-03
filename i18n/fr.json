@@ -63,7 +63,8 @@
 		"added_to_yesterday": "Ceci sera ajouté à la journée d'hier.",
 		"add_to_day": "Ajouter à",
 		"yesterday": "Hier",
-		"today": "Aujourd'hui"
+		"today": "Aujourd'hui",
+		"temp": "Provisoire"
 	},
 	"statistics": {
 		"title1": "Statistiques",

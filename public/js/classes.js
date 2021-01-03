@@ -73,6 +73,16 @@ class Day {
 		}
 		return this
 	}
+
+	tempDrink() {
+		let lastDrink = [...this.drinks].pop()
+		if (lastDrink.temp) {
+			this.drinks.pop()
+			return lastDrink
+		} else {
+			return false
+		}
+	}
 	
 	static fromJSON(object) {
 		if (object.weight) {
