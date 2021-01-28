@@ -43,6 +43,7 @@
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('bath')">{{$t("nav.bath")}}</a>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('vitamin')">{{$t("nav.vitamin")}}</a>
               <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('vomit')">{{$t("nav.vomit")}}</a>
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#addModal" v-on:click.prevent="loadModal('comments')">{{$t("main.comments")}}</a>
             </div>
           </li>
           <li class="nav-item">
@@ -123,6 +124,10 @@
               <tr v-if="selectedDay.vomit">
                 <th scope="row">{{$t("nav.vomit")}}</th>
                 <td v-for="vomit in selectedDay.vomit">{{vomit.time}} <span v-if="vomit.comments">({{vomit.comments}})</span></td>
+              </tr>
+              <tr v-if="selectedDay.comments">
+                <th scope="row">{{$t("main.comments")}}</th>
+                <td>{{selectedDay.comments}}</td>
               </tr>
             </tbody>
           </table>                                                                                                             
@@ -252,7 +257,7 @@
                   </label>
                 </div>
               </div>
-              <div v-if="openedModal == 'vomit'">
+              <div v-if="openedModal == 'vomit' || openedModal == 'comments'">
                 <div class="form-group">
                   <label for="comments">{{$t("main.comments")}}:</label>
                   <input id="comments" type="text" class="form-control" v-model="modalComments">

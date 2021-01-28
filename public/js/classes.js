@@ -15,6 +15,7 @@ class Day {
 		this.vomit = null
 		this.drinks = []
 		this.changes = []
+		this.comments = null
 	}
 
 	addDrink(drink) {

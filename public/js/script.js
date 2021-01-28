@@ -99,7 +99,7 @@ axios.get('/languages').then(response => {
 				this.modalTotalVolume = this.options.defaults.volume
 				this.modalLeftVolume = 0
 				this.modalSoap = false
-				this.modalComments = ''
+				this.modalComments = this.openedModal === 'comments' ? this.selectedDay.comments : ''
 				this.modalDrops = this.options.defaults.drops
 				this.modalVitamin = false
 				this.modalWeight = 0
@@ -149,6 +149,9 @@ axios.get('/languages').then(response => {
 						break
 					case 'height':
 						this.selectedDay.height = Number.parseInt(this.modalHeight)
+						break
+					case 'comments':
+						this.selectedDay.comments = this.modalComments
 						break
 					default:
 						console.error('Cannot write data for '+this.openedModal)
@@ -219,6 +222,8 @@ axios.get('/languages').then(response => {
 						}
 						break
 					case null:
+						break
+					case 'comments':
 						break
 					default:
 						res = 'Cannot write data for '+dataType
