@@ -62,7 +62,9 @@ axios.get('/languages').then(response => {
 			modalHeight: 0,
 			modalPooLevel: 0,
 			showLess: true,
-			modalDayToAdd: 'today'
+			modalDayToAdd: 'today',
+			errors: [],
+			modalErrors: []
 		},
 		mounted() {
 			this.loadDays()
@@ -84,6 +86,8 @@ axios.get('/languages').then(response => {
 					} else {
 						console.error('Day '+day+' not found in database.')
 					}
+				}).catch(err=>{
+					this.errors.push(err.message)
 				})
 			},
 			loadOptions() {
@@ -106,6 +110,7 @@ axios.get('/languages').then(response => {
 				this.modalHeight = 0
 				this.modalPooLevel = 2
 				this.modalDayToAdd = 'today'
+				this.modalErrors = []
 				this.loadDay(TimeUtils.today())
 			},
 			add() {
@@ -159,12 +164,46 @@ axios.get('/languages').then(response => {
 				}
 				
 				this.saveDay()
-				$('#addModal').modal('hide')
-				this.openedModal = null
 			},
 			saveDay() {
+				this.modalErrors = []
 				axios.post('/day',this.selectedDay.sort()).then(response => {
+					$('#addModal').modal('hide')
+					this.openedModal = null
 					this.loadDays()
+				}).catch(err => {
+					this.modalErrors.push(err)
+					switch (this.openedModal) {
+						case 'change':
+							this.selectedDay.changes.pop()
+							break;
+						case 'drink':
+							this.selectedDay.drinks.pop()
+							if (!this.modalVitamin) {
+								break;
+							}
+						case 'vitamin':
+							this.selectedDay.setVitamin(null)
+							break;
+						case 'bath':
+							this.selectedDay.setBath(null)
+							break;
+						case 'vomit':
+							this.selectedDay.vomit.pop()
+							break;
+						case 'weight':
+							this.selectedDay.weight = null
+							break
+						case 'height':
+							this.selectedDay.height = null
+							break
+						case 'comments':
+							this.selectedDay.comments = null
+							break
+						default:
+							console.error('Cannot write data for '+this.openedModal)
+							break;
+					}
 				})
 			},
 			loadDays() {
