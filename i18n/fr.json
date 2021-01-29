@@ -64,7 +64,8 @@
 		"add_to_day": "Ajouter à",
 		"yesterday": "Hier",
 		"today": "Aujourd'hui",
-		"add_comments": "Ajout commentaire"
+		"add_comments": "Ajout commentaire",
+		"error": "Erreur :"
 	},
 	"statistics": {
 		"title1": "Statistiques",
