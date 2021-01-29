@@ -5,7 +5,7 @@ axios.get('/languages').then(response => {
 	messages = response.data
 }).catch(function (error) {
 	// handle error
-	console.log(error)
+	console.error(error)
 	messages = {}
 }).then(function () {
 	// Create VueI18n instance with options
@@ -64,7 +64,8 @@ axios.get('/languages').then(response => {
 			showLess: true,
 			modalDayToAdd: 'today',
 			errors: [],
-			modalErrors: []
+			modalErrors: [],
+			optionsModalErrors: []
 		},
 		mounted() {
 			this.loadDays()
@@ -78,6 +79,7 @@ axios.get('/languages').then(response => {
 				return this.days.includes(TimeUtils.today())
 			},
 			loadDay(day) {
+				this.errors = []
 				axios.get('/day/'+day).then(response => {
 					if (response.data) {
 						this.selectedDay = Day.fromJSON(response.data).sort()
@@ -87,12 +89,15 @@ axios.get('/languages').then(response => {
 						console.error('Day '+day+' not found in database.')
 					}
 				}).catch(err=>{
-					this.errors.push(err.message)
+					this.errors.push(err)
 				})
 			},
 			loadOptions() {
+				this.errors = []
 				axios.get('/options').then(response => {
 					this.options = Options.fromJSON(response.data)
+				}).catch(err=>{
+					this.errors.push(err)
 				})
 			},
 			loadModal(modalName) {
@@ -207,6 +212,7 @@ axios.get('/languages').then(response => {
 				})
 			},
 			loadDays() {
+				this.errors = []
 				axios.get('/days').then(response => {
 					let days = response.data
 					if (days.length > 0) {
@@ -214,6 +220,8 @@ axios.get('/languages').then(response => {
 						let lastDay = days[0]
 						this.loadDay(lastDay)
 					}
+				}).catch(err => {
+					this.errors.push(err)
 				})
 			},
 			loadOptionsModal() {
@@ -222,13 +230,16 @@ axios.get('/languages').then(response => {
 				this.modalDefaultVolume = this.options.defaults.volume
 			},
 			saveOptions() {
+				this.optionsModalErrors = []
 				axios.post('/options',{defaults:{
 					volume: this.modalDefaultVolume,
 					drops: this.modalDefaultDrops
 				}}).then(response => {
 					this.loadOptions()
+					$('#optionsModal').modal('hide')
+				}).catch(err => {
+					this.optionsModalErrors.push(err)
 				})
-				$('#optionsModal').modal('hide')
 			},
 			alreadyExists(dataType,time) {
 				let res = null
@@ -316,7 +327,9 @@ axios.get('/languages').then(response => {
 				}
 
 				if (interval instanceof Object && interval.to && interval.from) {
-					axios.get('/days/'+interval.from+'/'+interval.to).then(displayGraph)
+					axios.get('/days/'+interval.from+'/'+interval.to).then(displayGraph).catch(err => {
+						console.error(err)
+					})
 				} else if (interval === 'today') {
 					this.getDaysData({
 						from: TimeUtils.dayBefore(),
@@ -329,7 +342,9 @@ axios.get('/languages').then(response => {
 						to: week[1]
 					})
 				} else {
-					axios.get('/days/all').then(displayGraph)
+					axios.get('/days/all').then(displayGraph).catch(err => {
+						console.error(err)
+					})
 				}
 			},
 			clearCharts() {
