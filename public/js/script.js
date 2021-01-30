@@ -119,6 +119,7 @@ axios.get('/languages').then(response => {
 				this.loadDay(TimeUtils.today())
 			},
 			add() {
+				this.backupDay()
 				switch (this.openedModal) {
 					case 'change':
 						let newChange = new Change(this.modalTime)
@@ -178,38 +179,14 @@ axios.get('/languages').then(response => {
 					this.loadDays()
 				}).catch(err => {
 					this.modalErrors.push(err)
-					switch (this.openedModal) {
-						case 'change':
-							this.selectedDay.changes.pop()
-							break;
-						case 'drink':
-							this.selectedDay.drinks.pop()
-							if (!this.modalVitamin) {
-								break;
-							}
-						case 'vitamin':
-							this.selectedDay.setVitamin(null)
-							break;
-						case 'bath':
-							this.selectedDay.setBath(null)
-							break;
-						case 'vomit':
-							this.selectedDay.vomit.pop()
-							break;
-						case 'weight':
-							this.selectedDay.weight = null
-							break
-						case 'height':
-							this.selectedDay.height = null
-							break
-						case 'comments':
-							this.selectedDay.comments = null
-							break
-						default:
-							console.error('Cannot write data for '+this.openedModal)
-							break;
-					}
+					this.restoreDay()
 				})
+			},
+			backupDay() {
+				this.backupedDay = Day.fromJSON({...this.selectedDay})
+			},
+			restoreDay() {
+				this.selectedDay = Day.fromJSON({...this.backupedDay})
 			},
 			loadDays() {
 				this.errors = []
