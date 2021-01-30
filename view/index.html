@@ -66,6 +66,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#statistics" v-on:click="showStatistics()">{{$t("statistics.title1")}}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#deleteModal" v-on:click.prevent="toggleDelete()">{{$t("nav.delete_mode")}}</a>
+          </li>
         </ul>
       </div>  
     </nav>
@@ -112,33 +115,39 @@
               <tr>
                 <th scope="row">{{$t("main.date")}}</th>
                 <td>{{localeDate(selectedDay.date)}}</td>
+                <!-- <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('day')"><i class="fas fa-trash"></i></button></td> -->
               </tr>
               <tr v-if="selectedDay.weight">
                 <th scope="row">{{$t("nav.weight")}}</th>
                 <td>{{selectedDay.weight}} g</td>
+                <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('weight')"><i class="fas fa-trash"></i></button></td>
               </tr>
               <tr v-if="selectedDay.height">
                 <th scope="row">{{$t("nav.height")}}</th>
                 <td>{{selectedDay.height}} cm</td>
+                <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('height')"><i class="fas fa-trash"></i></button></td>
               </tr>
               <tr v-if="selectedDay.bath">
                 <th scope="row">{{$t("nav.bath")}}</th>
                 <td>{{selectedDay.bath.time}}</td>
                 <td v-if="selectedDay.bath.soap">{{$t("main.soap")}}</td>
                 <td v-else>{{$t("main.water")}}</td>
+                <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('bath')"><i class="fas fa-trash"></i></button></td>
               </tr>
               <tr v-if="selectedDay.vitamin">
                 <th scope="row">{{$t("nav.vitamin")}} D</th>
                 <td>{{selectedDay.vitamin.time}}</td>
                 <td>{{selectedDay.vitamin.drops}} {{$t("main.drops")}}</td>
+                <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('vitamin')"><i class="fas fa-trash"></i></button></td>
               </tr>
-              <tr v-if="selectedDay.vomit">
+              <tr v-if="selectedDay.vomit && selectedDay.vomit.length">
                 <th scope="row">{{$t("nav.vomit")}}</th>
-                <td v-for="vomit in selectedDay.vomit">{{vomit.time}} <span v-if="vomit.comments">({{vomit.comments}})</span></td>
+                <td v-for="(vomit, index) in selectedDay.vomit">{{vomit.time}} <span v-if="vomit.comments">({{vomit.comments}})</span> <button v-if="mode === 'delete'" type="button" class="btn btn-danger" v-on:click="deleteElement('vomit',index)"><i class="fas fa-trash"></i></button></td>
               </tr>
               <tr v-if="selectedDay.comments">
                 <th scope="row">{{$t("main.comments")}}</th>
                 <td>{{selectedDay.comments}}</td>
+                <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('comments')"><i class="fas fa-trash"></i></button></td>
               </tr>
             </tbody>
           </table>                                                                                                             
@@ -146,7 +155,7 @@
             <thead>
               <tr>
                 <th scope="col">{{$t("main.drinks")}}</th>
-                <th v-for="(drink, index) in selectedDay.drinks" scope="col">{{index + 1}}</th>
+                <th v-for="(drink, index) in selectedDay.drinks" scope="col"><button v-if="mode === 'delete'" type="button" class="btn btn-danger" v-on:click="deleteElement('drinks',index)"><i class="fas fa-trash"></i></button><span v-else>{{index + 1}}</span></th>
               </tr>
             </thead>
             <tbody>
@@ -168,7 +177,7 @@
             <thead>
               <tr>
                 <th scope="col">{{$t("main.changes")}}</th>
-                <th v-for="(change, index) in selectedDay.changes" scope="col">{{index + 1}}</th>
+                <th v-for="(change, index) in selectedDay.changes" scope="col"><button v-if="mode === 'delete'" type="button" class="btn btn-danger" v-on:click="deleteElement('changes',index)"><i class="fas fa-trash"></i></button><span v-else>{{index + 1}}</span></th>
               </tr>
             </thead>
             <tbody>

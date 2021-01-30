@@ -20,7 +20,8 @@
 		"print": "Imprimer",
 		"language": "Langue",
 		"options": "Options",
-		"null": "Rien"
+		"null": "Rien",
+		"delete_mode": "Supprimer..."
 	},
 	"main": {
 		"title1": "Les plus utilisés",

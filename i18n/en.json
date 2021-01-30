@@ -20,7 +20,8 @@
 		"print": "Print",
 		"language": "Language",
 		"options": "Options",
-		"null": "Nothing"
+		"null": "Nothing",
+		"delete_mode": "Delete..."
 	},
 	"main": {
 		"title1": "Most used features",

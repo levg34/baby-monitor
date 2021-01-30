@@ -36,6 +36,16 @@ axios.get('/languages').then(response => {
 			},
 			showStatistics() {
 				statisticsView.show()
+			},
+			toggleDelete() {
+				if (mainVue.mode === 'normal') {
+					this.switchMode('delete')
+				} else {
+					this.switchMode('normal')
+				}
+			},
+			switchMode(mode) {
+				mainVue.switchMode(mode)
 			}
 		}
 	}).$mount('#nav')
@@ -65,7 +75,8 @@ axios.get('/languages').then(response => {
 			modalDayToAdd: 'today',
 			errors: [],
 			modalErrors: [],
-			optionsModalErrors: []
+			optionsModalErrors: [],
+			mode: 'normal'
 		},
 		mounted() {
 			this.loadDays()
@@ -187,6 +198,24 @@ axios.get('/languages').then(response => {
 			},
 			restoreDay() {
 				this.selectedDay = Day.fromJSON({...this.backupedDay})
+			},
+			deleteElement(element,index) {
+				this.backupDay()
+				if (element === 'day') {
+					console.error('Cannot remove day (yet)')
+				} else if (index || index === 0) {
+					this.selectedDay[element].splice(index, 1)
+				} else {
+					this.selectedDay[element] = null
+				}
+				this.saveDay()
+			},
+			switchMode(mode) {
+				if (mode) {
+					this.mode = mode
+				} else {
+					this.mode = null
+				}
 			},
 			loadDays() {
 				this.errors = []
