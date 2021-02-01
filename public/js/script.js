@@ -197,6 +197,10 @@ axios.get('/languages').then(response => {
 			saveDay() {
 				this.modalErrors = []
 				axios.post('/day',this.selectedDay.sort()).then(response => {
+					if (this.mode === 'delete') {
+						this.mode = 'normal'
+					}
+					// if mode === 'add'
 					$('#addModal').modal('hide')
 					this.openedModal = null
 					this.loadDays()
