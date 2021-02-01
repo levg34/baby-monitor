@@ -98,7 +98,9 @@ class Day {
 		}
 		object.drinks = object.drinks.map(d=>Drink.fromJSON(d))
 		object.changes = object.changes.map(c=>Change.fromJSON(c))
-		object.meals = object.meals.map(m=>Meal.fromJSON(m))
+		if (object.meals) {
+			object.meals = object.meals.map(m=>Meal.fromJSON(m))
+		}
 		return Object.assign(new Day(), object)
 	}
 }
