@@ -217,7 +217,7 @@ class Options {
 }
 
 class Meal {
-	static mealtypes = ['puree', 'compote', 'other']
+	// static mealtypes = ['puree', 'compote', 'other']
 
     constructor(type, contents, time) {
 		if (time) {
@@ -235,4 +235,4 @@ class Meal {
     }
 }
 
-// Meal.mealtypes = ['puree', 'compote', 'other']
+Meal.mealtypes = ['puree', 'compote', 'other']
