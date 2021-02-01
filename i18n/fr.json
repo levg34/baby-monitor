@@ -21,7 +21,9 @@
 		"language": "Langue",
 		"options": "Options",
 		"null": "Rien",
-		"delete_mode": "Supprimer..."
+		"delete_mode": "Supprimer...",
+		"meal": "Meal",
+		"comments": "Commentaires"
 	},
 	"main": {
 		"title1": "Les plus utilisés",
@@ -66,7 +68,14 @@
 		"yesterday": "Hier",
 		"today": "Aujourd'hui",
 		"add_comments": "Ajout commentaire",
-		"error": "Erreur :"
+		"error": "Erreur :",
+		"meals": "Repas",
+		"meal_type": "Type",
+		"meal_contents": "Contenu",
+		"add_meal": "Ajout repas",
+		"meal_type_puree": "Purée",
+		"meal_type_compote": "Compote",
+		"meal_type_other": "Autre"
 	},
 	"statistics": {
 		"title1": "Statistiques",

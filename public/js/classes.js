@@ -16,6 +16,7 @@ class Day {
 		this.drinks = []
 		this.changes = []
 		this.comments = null
+		this.meals = []
 	}
 
 	addDrink(drink) {
@@ -24,6 +25,10 @@ class Day {
 	
 	addChange(change) {
 		this.changes.push(change)
+	}
+
+	addMeal(meal) {
+		this.meals.push(meal)
 	}
 	
 	setBath(bath) {
@@ -93,6 +98,7 @@ class Day {
 		}
 		object.drinks = object.drinks.map(d=>Drink.fromJSON(d))
 		object.changes = object.changes.map(c=>Change.fromJSON(c))
+		object.meals = object.meals.map(m=>Meal.fromJSON(m))
 		return Object.assign(new Day(), object)
 	}
 }
@@ -207,3 +213,24 @@ class Options {
 		}
 	}
 }
+
+class Meal {
+	static mealtypes = ['puree', 'compote', 'other']
+
+    constructor(type, contents, time) {
+		if (time) {
+			this.time = time
+		} else {
+			this.time = TimeUtils.now()
+		}
+        this.type = type ? type : 'other'
+		this.contents = contents ? contents : '?'
+		this.comments = null
+	}
+	
+    static fromJSON(object) {
+        return Object.assign(new Meal(), object)
+    }
+}
+
+// Meal.mealtypes = ['puree', 'compote', 'other']

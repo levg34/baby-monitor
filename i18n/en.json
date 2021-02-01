@@ -21,7 +21,9 @@
 		"language": "Language",
 		"options": "Options",
 		"null": "Nothing",
-		"delete_mode": "Delete..."
+		"delete_mode": "Delete...",
+		"meal": "Meal",
+		"comments": "Comments"
 	},
 	"main": {
 		"title1": "Most used features",
@@ -66,7 +68,14 @@
 		"yesterday": "Yesterday",
 		"today": "Today",
 		"add_comments": "Add comments",
-		"error": "Error:"
+		"error": "Error:",
+		"meals": "Meals",
+		"meal_type": "Type",
+		"meal_contents": "Contents",
+		"add_meal": "Add meal",
+		"meal_type_puree": "Puree",
+		"meal_type_compote": "Compote",
+		"meal_type_other": "Other"
 	},
 	"statistics": {
 		"title1": "Statistics",

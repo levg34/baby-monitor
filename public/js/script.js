@@ -76,7 +76,10 @@ axios.get('/languages').then(response => {
 			errors: [],
 			modalErrors: [],
 			optionsModalErrors: [],
-			mode: 'normal'
+			mode: 'normal',
+			mealtypes: Meal.mealtypes,
+			modalMealType: null,
+			modalMealContents: null
 		},
 		mounted() {
 			this.loadDays()
@@ -127,6 +130,8 @@ axios.get('/languages').then(response => {
 				this.modalPooLevel = 2
 				this.modalDayToAdd = 'today'
 				this.modalErrors = []
+				this.modalMealType = 'other'
+				this.modalMealContents = ''
 				this.loadDay(TimeUtils.today())
 			},
 			add() {
@@ -174,6 +179,13 @@ axios.get('/languages').then(response => {
 						break
 					case 'comments':
 						this.selectedDay.comments = this.modalComments
+						break
+					case 'meal':
+						let newMeal = new Meal(this.modalMealType,this.modalMealContents)
+						if (this.modalComments) {
+							newMeal.comments = this.modalComments
+						}
+						this.selectedDay.addMeal(newMeal)
 						break
 					default:
 						console.error('Cannot write data for '+this.openedModal)
@@ -280,6 +292,9 @@ axios.get('/languages').then(response => {
 					case null:
 						break
 					case 'comments':
+						break
+					case 'meal':
+						res = this.selectedDay.meals.find(meal=>meal.time == time)
 						break
 					default:
 						res = 'Cannot write data for '+dataType
