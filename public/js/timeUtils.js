@@ -11,8 +11,10 @@ class TimeUtils {
     }
 
     static jsDateToDateString(date) {
-        let dateString = date.toISOString()
-        return dateString.slice(0,dateString.indexOf('T'))
+        let dateString = date.getFullYear() + '-' +
+            ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+            ('00' + date.getDate()).slice(-2)
+        return dateString
     }
 
     static localeDate(date,locale) {
