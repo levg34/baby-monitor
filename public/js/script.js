@@ -79,7 +79,8 @@ axios.get('/languages').then(response => {
 			mode: 'normal',
 			mealtypes: Meal.mealtypes,
 			modalMealType: null,
-			modalMealContents: null
+			modalMealContents: null,
+			soapDay: false
 		},
 		mounted() {
 			this.loadDays()
@@ -92,15 +93,27 @@ axios.get('/languages').then(response => {
 			hasDataToday() {
 				return this.days.includes(TimeUtils.today())
 			},
+			needSoap(day) {
+				let daysCycle = 2
+				let nDaysAgo = TimeUtils.nDaysFrom(day,daysCycle)
+				axios.get('/days/'+nDaysAgo+'/'+day).then(response => {
+					let days =  response.data
+					let soapOK = days.filter(day=>day.bath && day.bath.soap).length > 0
+					this.soapDay = !soapOK
+				}).catch(err => {
+					this.errors.push(err)
+				})
+			},
 			loadDay(day) {
 				this.errors = []
 				axios.get('/day/'+day).then(response => {
 					if (response.data) {
 						this.selectedDay = Day.fromJSON(response.data).sort()
+						this.needSoap(day)
 					} else if (day == TimeUtils.today()) {
 						this.selectedDay = new Day()
 					} else {
-						console.error('Day '+day+' not found in database.')
+						this.errors.push('Day '+day+' not found in database.')
 					}
 				}).catch(err=>{
 					this.errors.push(err)
@@ -188,7 +201,7 @@ axios.get('/languages').then(response => {
 						this.selectedDay.addMeal(newMeal)
 						break
 					default:
-						console.error('Cannot write data for '+this.openedModal)
+						this.errors.push('Cannot write data for '+this.openedModal)
 						break;
 				}
 				
@@ -218,7 +231,7 @@ axios.get('/languages').then(response => {
 			deleteElement(element,index) {
 				this.backupDay()
 				if (element === 'day') {
-					console.error('Cannot remove day (yet)')
+					this.errors.push('Cannot remove day (yet)')
 				} else if (index || index === 0) {
 					this.selectedDay[element].splice(index, 1)
 				} else {
@@ -302,7 +315,7 @@ axios.get('/languages').then(response => {
 						break
 					default:
 						res = 'Cannot write data for '+dataType
-						console.error(res)
+						this.errors.push(res)
 						break
 				}
 
