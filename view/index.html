@@ -135,6 +135,10 @@
                 <td v-else>{{$t("main.water")}}</td>
                 <td v-if="mode === 'delete'"><button type="button" class="btn btn-danger" v-on:click="deleteElement('bath')"><i class="fas fa-trash"></i></button></td>
               </tr>
+              <tr v-else-if="soapDay">
+                <th scope="row">{{$t("nav.bath")}}</i></th>
+                <td><i class="fas fa-exclamation-triangle text-warning"></i> <i class="fas fa-soap text-info"></i></td>
+              </tr>
               <tr v-if="selectedDay.vitamin">
                 <th scope="row">{{$t("nav.vitamin")}} D</th>
                 <td>{{selectedDay.vitamin.time}}</td>
