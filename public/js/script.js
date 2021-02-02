@@ -10,7 +10,7 @@ axios.get('/languages').then(response => {
 }).then(function () {
 	// Create VueI18n instance with options
 	const i18n = new VueI18n({
-		locale: 'fr', // set locale
+		locale: DEFAULT_LANGUAGE, // set locale
 		messages, // set locale messages
 	})
 	
@@ -19,7 +19,7 @@ axios.get('/languages').then(response => {
 		i18n
 	}).$mount('#jumbo')
 
-	new Vue({
+	let navVue = new Vue({
 		i18n,
 		data: {
 			languages: Object.keys(messages).map(lang => Object.create({locale:lang,name:messages[lang].english_name,image:messages[lang].image}))
@@ -123,6 +123,9 @@ axios.get('/languages').then(response => {
 				this.errors = []
 				axios.get('/options').then(response => {
 					this.options = Options.fromJSON(response.data)
+					if (this.options.defaults.language) {
+						navVue.setLocale(this.options.defaults.language)
+					}
 				}).catch(err=>{
 					this.errors.push(err)
 				})
