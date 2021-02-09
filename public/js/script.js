@@ -80,11 +80,17 @@ axios.get('/languages').then(response => {
 			mealtypes: Meal.mealtypes,
 			modalMealType: null,
 			modalMealContents: null,
-			soapDay: false
+			soapDay: false,
+			modalDefaultLanguage: DEFAULT_LANGUAGE
 		},
 		mounted() {
 			this.loadDays()
 			this.loadOptions()
+		},
+		computed: {
+			languages() {
+				navVue.languages
+			}
 		},
 		methods: {
 			localeDate: function (date) {
@@ -123,9 +129,9 @@ axios.get('/languages').then(response => {
 				this.errors = []
 				axios.get('/options').then(response => {
 					this.options = Options.fromJSON(response.data)
-					if (this.options.defaults.language) {
+					// if (this.options.defaults.language !== i18n.locale) {
 						navVue.setLocale(this.options.defaults.language)
-					}
+					// }
 				}).catch(err=>{
 					this.errors.push(err)
 				})
@@ -266,12 +272,14 @@ axios.get('/languages').then(response => {
 				this.loadOptions()
 				this.modalDefaultDrops = this.options.defaults.drops
 				this.modalDefaultVolume = this.options.defaults.volume
+				this.modalDefaultLanguage = this.options.defaults.language
 			},
 			saveOptions() {
 				this.optionsModalErrors = []
 				axios.post('/options',{defaults:{
 					volume: this.modalDefaultVolume,
-					drops: this.modalDefaultDrops
+					drops: this.modalDefaultDrops,
+					language: this.modalDefaultLanguage
 				}}).then(response => {
 					this.loadOptions()
 					$('#optionsModal').modal('hide')
