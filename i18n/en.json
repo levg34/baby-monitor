@@ -75,7 +75,8 @@
 		"add_meal": "Add meal",
 		"meal_type_puree": "Puree",
 		"meal_type_compote": "Compote",
-		"meal_type_other": "Other"
+		"meal_type_other": "Other",
+		"days_cycle": "Days between baths/soap"
 	},
 	"statistics": {
 		"title1": "Statistics",
