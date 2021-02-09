@@ -75,7 +75,8 @@
 		"add_meal": "Ajout repas",
 		"meal_type_puree": "Purée",
 		"meal_type_compote": "Compote",
-		"meal_type_other": "Autre"
+		"meal_type_other": "Autre",
+		"days_cycle": "Jours entre deux bains/savons"
 	},
 	"statistics": {
 		"title1": "Statistiques",

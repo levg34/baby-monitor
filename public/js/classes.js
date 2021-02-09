@@ -1,5 +1,6 @@
-let DEFAULT_VOLUME = 170
-let DEFAULT_DROPS = 3
+const DEFAULT_VOLUME = 170
+const DEFAULT_DROPS = 3
+const DEFAULT_DAYS_CYCLE = 1
 
 class Day {
 	constructor(date) {
@@ -198,7 +199,8 @@ class Options {
 	constructor(defaults) {
 		this.defaults = {
 			volume: DEFAULT_VOLUME,
-			drops: DEFAULT_DROPS
+			drops: DEFAULT_DROPS,
+			daysCycle: DEFAULT_DAYS_CYCLE
 		}
 		if (defaults) {
 			Object.assign(this.defaults, defaults)

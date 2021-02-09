@@ -68,6 +68,7 @@ axios.get('/languages').then(response => {
 			options: null,
 			modalDefaultVolume: 0,
 			modalDefaultDrops: 0,
+			modalDefaultDaysCycle: 0,
 			modalWeight: 0,
 			modalHeight: 0,
 			modalPooLevel: 0,
@@ -94,7 +95,7 @@ axios.get('/languages').then(response => {
 				return this.days.includes(TimeUtils.today())
 			},
 			needSoap(day) {
-				let daysCycle = 2
+				let daysCycle = this.options.defaults.daysCycle || 0
 				let nDaysAgo = TimeUtils.nDaysFrom(day,daysCycle)
 				axios.get('/days/'+nDaysAgo+'/'+day).then(response => {
 					let days =  response.data
@@ -123,6 +124,7 @@ axios.get('/languages').then(response => {
 				this.errors = []
 				axios.get('/options').then(response => {
 					this.options = Options.fromJSON(response.data)
+					this.selectedDay && this.needSoap(this.selectedDay.date)
 				}).catch(err=>{
 					this.errors.push(err)
 				})
@@ -263,12 +265,14 @@ axios.get('/languages').then(response => {
 				this.loadOptions()
 				this.modalDefaultDrops = this.options.defaults.drops
 				this.modalDefaultVolume = this.options.defaults.volume
+				this.modalDefaultDaysCycle = this.options.defaults.daysCycle
 			},
 			saveOptions() {
 				this.optionsModalErrors = []
 				axios.post('/options',{defaults:{
 					volume: this.modalDefaultVolume,
-					drops: this.modalDefaultDrops
+					drops: this.modalDefaultDrops,
+					daysCycle: this.modalDefaultDaysCycle
 				}}).then(response => {
 					this.loadOptions()
 					$('#optionsModal').modal('hide')
