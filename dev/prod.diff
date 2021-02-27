@@ -8,6 +8,6 @@ index eaf472b..150e600 100644
      <!-- vuejs -->
 -    <script src="https://unpkg.com/vue/dist/vue.js"></script>
 +    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-     <script src="https://unpkg.com/vue-i18n/dist/vue-i18n.js"></script>
+     <script src="https://unpkg.com/vue-i18n@8.23.0"></script>
      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
      
